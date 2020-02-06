@@ -1,24 +1,8 @@
-# README
+# branch名のルール
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+基本的には
+feature/何をしたか-どこを
+の記述
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+例）headerの作成の場合
+feature/create-header
