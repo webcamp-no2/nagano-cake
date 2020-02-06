@@ -1,24 +1,16 @@
-# README
+#Gitに関するルール
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## branch名
 
-Things you may want to cover:
+基本的には
+feature/何をしたか-どこを
+の記述
 
-* Ruby version
+例）headerの作成の場合
+feature/create-header
 
-* System dependencies
+## commit-message
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+[何をしたか]どこの
+例）headerにicon追加
+git commit -m "[add]header-icon"
