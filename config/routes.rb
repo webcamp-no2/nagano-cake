@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   devise_for :customers
   devise_for :admins
-
+  
+  # admin
   namespace :admin do
     get 'homes/top'
     resources :orders, except: [:new, :create, :destroy]
@@ -9,29 +10,26 @@ Rails.application.routes.draw do
     resources :products, except: :destroy
     resources :genres, except: [:new, :show, :destroy]
   end
-
+  
+  # customer
   get 'homes/top'
   get 'homes/about'
- 
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-
-
-  resource :orders, only: [:new, :create, :update, :show]
-  resource :cart_items, only: [:create, :update, :destroy] do
+  
+  resource :customer, only: [:edit, :update, :show] do
     member do
-      get 'index'
+      get 'withdraw_confirm'
+      patch 'withdraw'
     end
   end
-  resource :customers, only: [:edit, :update, :show] do
+  resources :orders, except: [:edit, :destroy] do
     member do
-      get 'index'
+      get 'thanks'
+      get 'confirm'
     end
   end
+  resources :cart_items, except: [:new, :edit, :show]
   resources :products, only: [:index, :show]
-  resource :delivery_addresses, only: [:create, :edit, :update, :destroy] do
-    member do
-      get 'index'
-    end
-  end
-
+  resources :delivery_addresses, except: [:new, :show]
+  
+  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
