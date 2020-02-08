@@ -1,2 +1,54 @@
-<h1>Admin::Orders#index</h1>
-<p>Find me in app/views/admin/orders/index.html.erb</p>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-10 col-xs-offset-1">
+
+			<h2>注文履歴一覧</h2>
+
+			<!-- table -->
+			<div class="order-table">
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th>購入日時</th>
+							<th>購入者</th>
+							<th>注文個数</th>
+							<th>注文ステータス</th>
+						</tr>
+					</thead>
+					<tbody>
+						<% @orders.each do |order| %>
+						<tr>
+							<td><%= order.created_at %></td>
+							<td><%= order.customer %></td>
+							<td><%= order.order.count %></td>
+							<td><%= order.status %></td>
+						</tr>
+						<% end %>
+					</tbody>
+				</table>
+			</div>
+
+			<!-- pagenation -->
+			<nav>
+				<ul class="pagination">
+					<li>
+						<a href="#" aria-label="前のページへ">
+							<span aria-hidden="true">«</span>
+						</a>
+					</li>
+					<li><a href="#">1</a></li>
+					<li><a href="#">2</a></li>
+					<li><a href="#">3</a></li>
+					<li><a href="#">4</a></li>
+					<li><a href="#">5</a></li>
+					<li>
+						<a href="#" aria-label="次のページへ">
+							<span aria-hidden="true">»</span>
+						</a>
+					</li>
+				</ul>
+			</nav>
+
+		</div>
+	</div>
+</div>
