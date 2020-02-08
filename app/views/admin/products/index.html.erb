@@ -1,5 +1,5 @@
 <h2>商品一覧画面</h2>
-
+<%= link_to "商品登録", new_admin_product_path %>
 <table class="table">
   <thead>
     <tr>
@@ -11,13 +11,14 @@
     </tr>
   </thead>
   <tbody>
-    <%= @products.each do |product| %>
-    <tr><%= @product.product_id %></tr>
-    <tr><%= @product.name %></tr>
-    <tr><%= @product.price %></tr>
-    <tr><%= @product.genre_id %></tr>
-    <tr><%= @product.sales_status_id %></tr>
+    <% @products.each do |product| %>
+    <tr>
+      <td><%= product.id %></td>
+      <td><%= link_to product.name, admin_product_path(product.id) %></td>
+      <td><%= "#{product.price}円" %></td>
+      <td><%= product.genre_id %></td>
+      <td><%= product.sales_status %></td>
+    </tr>
     <% end %>
   </tbody>
 </table>
-
