@@ -6,31 +6,40 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+# （参考）seedを実行する前に現在の全てのテーブルのデータを削除するコマンド
+# rails db:migrate:reset
+
 # Fakerを日本語化する
 Faker::Config.locale = :ja
 
-# admin
-3.times do |num|
+profiles = [
+  { email: "oka@example.com", name: "おかちゃん" },
+  { email: "ono@example.com", name: "おのしゅん" },
+  { email: "noda@example.com", name: "のだっち" },
+]
+
+profiles.each do |profile|
   Admin.create!(
-    email: Faker::Internet.email,
+    email: profile[:email],
+    name: profile[:name],
     password: "password"
   )
 end
 # admin/
 
 # customer
-3.times do |num|
+profiles.each do |profile|
   Customer.create!(
     last_name: Faker::Name.last_name,
     first_name: Faker::Name.first_name,
     kana_last_name: "ノダ",
     kana_first_name: "ケンセイ",
     password: "password",
-    email: Faker::Internet.email,
+    email: profile[:email],
     address: "長崎県〇〇町1234-56",
     zip_code: Faker::Address.zip_code,
     tel: Faker::PhoneNumber.phone_number,
-    admittion_status: Faker::Number.within(range: 0..1)
+    admittion_status: Faker::Boolean.boolean
   )
 end
 # customer/
@@ -59,28 +68,13 @@ end
     image_id: 'default', # not nullのため入れている。画像表示する時falloutの状態にしたいが、エラーになるかも
     description: Faker::Food.description,
     price: Faker::Number.between(from: 100, to: 1000),
-    sales_status: Faker::Number.within(range: 0..1)
+    sales_status: Faker::Boolean.boolean
   )
 end
 # product/
 
 # customer
 Customer.find_each do |customer|
-  # order
-  3.times do |num|
-    Order.create!(
-      customer_id: customer.id,
-      payment_method: rand(2) == 1 ? "銀行振込" : "クレジットカード",
-      status: Faker::Number.within(range: 0..4),
-      zip_code: Faker::Address.zip_code,
-      delivery_address: Faker::Internet.email,
-      delivery_name: Faker::Name.name,
-      postage: 800,
-      payment: Faker::Number.between(from: 1000, to: 20000)
-    )
-  end
-  # order/
-
   # delivery
   3.times do |num|
     Delivery.create!(
@@ -92,15 +86,33 @@ Customer.find_each do |customer|
   end
   # delivery/
 
-  # order product
+  # order
   3.times do |num|
-    OrderProduct.create!(
-      product_id: Product.all.sample.id,
-      order_id: Order.all.sample.id,
-      count: Faker::Number.within(range: 1..20),
-      ordered_price: Faker::Number.between(from: 100, to: 1000),
-      production_status: Faker::Number.within(range: 0..4)
+    Order.create!(
+      customer_id: customer.id,
+      payment_method: rand(2) == 1 ? "銀行振込" : "クレジットカード",
+      status: Faker::Number.within(range: 0..4),
+      zip_code: Faker::Address.zip_code,
+      delivery_address: Delivery.where(customer_id: customer.id).sample.address,
+      delivery_name: Delivery.where(customer_id: customer.id).sample.name,
+      postage: 800,
+      payment: Faker::Number.between(from: 1000, to: 20000)
     )
+  end
+  # order/
+
+  # order product
+  # 全てのオーダーに1つ以上の注文商品を持たせる
+  Order.all.each do |order|
+    Faker::Number.within(range: 1..5).times do |num|
+      OrderProduct.create!(
+        product_id: Product.all.sample.id,
+        order_id: order.id,
+        count: Faker::Number.within(range: 1..20),
+        ordered_price: Faker::Number.between(from: 100, to: 1000),
+        production_status: Faker::Number.within(range: 0..4)
+      )
+    end
   end
   # order product/
 

@@ -1,0 +1,11 @@
+header .navbar {
+  border-bottom: 1px solid #898989;
+}
+/*ログインadmin.nameの表示サイズ*/
+header .navbar-brand {
+  font-size: 15px;
+}
+/*検索欄の右側に設定*/
+.search-btn {
+  margin-right: 45px;
+}
