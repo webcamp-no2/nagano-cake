@@ -4,9 +4,7 @@
   <title>ながのCAKE - 管理ページ</title>
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
-  <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-  <link rel="stylesheet" type="text/css" href="admin.css">
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 </head>
 <body>
@@ -24,9 +22,7 @@
             <%= image_tag 'cakes.png', :size =>'100x95' %>
           </p>
           <% if admin_signed_in? %>
-          <p class="navbar-brand"><%= current_admin.name %></p>
-          <% else %>
-          <p class="navbar-text">管理者名</p>
+            <p class="navbar-brand"><%= current_admin.name %></p>
           <% end %>
         </div>
         <div class="collapse navbar-collapse navbar-right" id="navbarEexample5">
