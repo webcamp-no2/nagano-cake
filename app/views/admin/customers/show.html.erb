@@ -7,9 +7,9 @@
       <td class="col-xs-9">
         <%= @customer.id %>
         <% if @customer.admittion_status == true %>
-          <span class="label label-primary">有効会員</span>
+          <span class="label label-primary admittion_status_label">有効会員</span>
         <% else %>
-          <span class="label label-danger">退会済会員</span>
+          <span class="label label-danger admittion_status_label">退会済会員</span>
         <% end %>
       </td>
     </tr>
