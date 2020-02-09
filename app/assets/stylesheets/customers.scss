@@ -9,4 +9,10 @@
 .admin-customers-index-paginate {
   text-align: center;
 }
+
+.admin-customers-show-table > tbody > tr > th,
+.admin-customers-show-table > tbody > tr > td {
+  border: none !important;
+  line-height: 2em !important;
+}
 //customers/
