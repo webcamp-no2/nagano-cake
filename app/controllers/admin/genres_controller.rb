@@ -5,7 +5,6 @@ class Admin::GenresController < Admin::BaseController
   end
 
   def create
-  	binding.pry
   	@genre = Genre.new(genre_params)
   	if @genre.save
   		flash[:notice] = "You have creatad book successfully."

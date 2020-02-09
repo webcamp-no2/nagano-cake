@@ -18,24 +18,24 @@
 
 			<!-- success-massage -->
 			<% if flash[:notice] %>
-			  <p><%= flash[:notice] %></p>
+			  <p class="success-message"><%= flash[:notice] %></p>
 			<% end %>
 
 			<!-- new genre form -->
-			<div class="new-form">
+			<div class="new-genre-form">
 				<%= form_for [:admin, @genre] do |f| %>
 					<%= f.label :name, "ジャンル" %>
 					<%= f.text_field :name %>
 					<%= f.label :name, "有効" %>
-					<%= f.radio_button :active_status, :true, checked: true %>
+					<%= f.radio_button :active_status, :"有効", checked: true %>
 					<%= f.label :name, "無効" %>
-					<%= f.radio_button :active_status, :false %>
+					<%= f.radio_button :active_status, :"無効" %>
 					<%= f.submit '追加', class:"btn btn-primary" %>
 				<% end %>
 			</div>
 
 			<!-- genre index -->
-			<table class="table">
+			<table class="table genre-index">
 				<thead>
 					<tr>
 						<th>ジャンル</th>
