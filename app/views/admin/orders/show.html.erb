@@ -1,2 +1,92 @@
-<h1>Admin::Orders#show</h1>
-<p>Find me in app/views/admin/orders/show.html.erb</p>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-10 col-xs-offset-1">
+			<h2>注文詳細画面</h2>
+
+			<!-- info table -->
+			<div class="info-table">
+				<table class="row">
+					<tbody>
+						<tr>
+							<th class="col-xs-3 row-title">購入者</th>
+							<td class="col-xs-9"><%= @order.customer.last_name + ' ' + @order.customer.first_name %></td>
+						</tr>
+						<tr>
+							<th class="col-xs-3 row-title">配送先</th>
+							<td class="col-xs-9">
+								<p><%= @order.delivery_address %></p>
+								<p><%= @order.delivery_name %></p>
+							</td>
+						</tr>
+						<tr>
+							<th class="col-xs-3 row-title">支払い方法</th>
+							<td class="col-xs-9"><%= @order.payment_method %></td>
+						</tr>
+						<tr>
+							<th class="col-xs-3 row-title">注文ステータス</th>
+							<td class="col-xs-9">
+								<%= form_for [:admin, @order] do |f| %>
+									<%= f.select :status, Order.statuses.keys.to_a %>
+									<%= f.submit '更新' %>
+								<% end %>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+			<!-- product table -->
+			<div class="products-table">
+				<table class="table">
+					<thead>
+						<tr>
+							<th>商品名</th>
+							<th>単価（税込み）</th>
+							<th>数量</th>
+							<th>小計</th>
+							<th>製作ステータス</th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+						<% @order_products.each do |order_product| %>
+						<tr>
+							<td><%= order_product.product.name %></td>
+							<td><%= order_product.ordered_price %></td>
+							<td><%= order_product.count %></td>
+							<td><%= order_product.subtotal_price %>円</td>
+							<td>
+								<%= form_for [:admin, order_product] do |f| %>
+									<%= f.select :production_status, OrderProduct.production_statuses.keys.to_a %>
+									<%= f.submit '更新' %>
+								<% end %>
+							</td>
+						</tr>
+						<% end %>
+					</tbody>
+				</table>
+			</div>
+
+			<!-- price table -->
+			<div class="price-table">
+				<table class="row">
+					<tbody>
+						<tr>
+							<th class="col-xs-3 row-title">商品合計</th>
+							<td class="col-xs-9"><%= @order.product_sum %>円</td>
+						</tr>
+						<tr>
+							<th class="col-xs-3 row-title">送料</th>
+							<td class="col-xs-9"><%= @order.postage %>円</td>
+						</tr>
+						<tr>
+							<th class="col-xs-3 row-title">請求金額合計</th>
+							<td class="col-xs-9"><%= @order.total_price %>円</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+
