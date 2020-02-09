@@ -8,6 +8,7 @@ class Admin::CustomersController < Admin::BaseController
   end
 
   def edit
+    @customer = Customer.find(params[:id])
   end
 
   def update
