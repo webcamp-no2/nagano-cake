@@ -18,13 +18,15 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
-// 共通
-
 .error_explanation{
 	color: red;
 	background-color: pink;
 	border-radius: 3px;
 	padding: 10px;
+}
+
+ #notice {
+  color: green;
 }
 
 .success-message{
