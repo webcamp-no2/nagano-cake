@@ -1,12 +1,18 @@
 // Place all the styles related to the admin::genres controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+// 共通
+
 .error_explanation{
 	color: red;
 	background-color: pink;
 	border-radius: 3px;
 	padding: 10px;
 }
+
+// admin-genre-index
 
 .field_with_errors {
   display: inline;
@@ -22,4 +28,16 @@
 
 .genre-index{
 	margin-top: 30px;
+}
+
+// admin-genre-edit
+
+.edit-genre-form{
+	margin-top: 30px;
+}
+
+.edit-form
+.edit-radio-button
+.edit-update-button{
+	padding-top: 20px;
 }
