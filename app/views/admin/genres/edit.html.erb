@@ -29,10 +29,10 @@
 						<label>ステータス</label>
 					</div>
 					<div class="col-xs-8">
-						<%= f.label :name, "有効" %>
-						<%= f.radio_button :active_status, :"有効", checked: true %>
-						<%= f.label :name, "無効" %>
-						<%= f.radio_button :active_status, :"無効" %>
+						<%= f.label :name, "有効", for: "genre_active_status_有効" %>
+						<%= f.radio_button :active_status, :"有効", :checked => (@genre.active_status == "有効") %>
+						<%= f.label :name, "無効", for: "genre_active_status_無効" %>
+						<%= f.radio_button :active_status, :"無効", :checked => (@genre.active_status == "無効") %>
 					</div>
 				</div>
 
