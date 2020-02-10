@@ -10,10 +10,14 @@
   text-align: center;
 }
 
-.admin-customers-edit-table > tbody > tr > th,
-.admin-customers-edit-table > tbody > tr > td {
+.admin-customers-edit-table th,
+.admin-customers-edit-table td {
   border: none !important;
   line-height: 2em !important;
+}
+
+.admin-customers-edit-table .field_with_errors {
+  display: inline-block
 }
 
 .admittion_status_label {

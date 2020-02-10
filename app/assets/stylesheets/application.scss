@@ -17,3 +17,11 @@
 /*bootstrapの呼び出し*/
  @import "bootstrap-sprockets";
  @import "bootstrap";
+
+ #notice {
+  color: green;
+}
+
+#error_explanation {
+  color: red;
+}
