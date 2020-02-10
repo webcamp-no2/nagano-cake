@@ -17,7 +17,7 @@
               <td><%= customer.id %></td>
               <td><%= link_to (customer.last_name + customer.first_name), admin_customer_path(customer) %></td>
               <td><%= customer.email %></td>
-              <td><%= customer.admittion_status ? '有効' : '退会済' %></td>
+              <td><%= customer.admittion_status=="validity" ? '有効' : '退会済' %></td>
             </tr>
           <% end %>
         </tbody>

@@ -1,12 +1,12 @@
 <div class="container">
+  <p id="notice"><%= notice %></p>
   <h2 class="admin-customers-show-title">会員詳細画面</h2>
-
   <table class="row table admin-customers-show-table">
     <tr>
-      <th class="col-xs-3">顧客ID</th>
-      <td class="col-xs-9">
+      <th class="col-xs-2">顧客ID</th>
+      <td class="col-xs-10">
         <%= @customer.id %>
-        <% if @customer.admittion_status == true %>
+        <% if @customer.admittion_status == "validity" %>
           <span class="label label-primary admittion_status_label">有効会員</span>
         <% else %>
           <span class="label label-danger admittion_status_label">退会済会員</span>
@@ -15,11 +15,11 @@
     </tr>
     <tr>
       <th>氏名</th>
-      <td><%= @customer.last_name + "  " + @customer.first_name %></td>
+      <td><%= @customer.last_name + "　" + @customer.first_name %></td>
     </tr>
     <tr>
       <th>フリガナ</th>
-      <td><%= @customer.kana_last_name + "  " + @customer.kana_first_name %></td>
+      <td><%= @customer.kana_last_name + "　" + @customer.kana_first_name %></td>
     </tr>
     <tr>
       <th>郵便番号</th>

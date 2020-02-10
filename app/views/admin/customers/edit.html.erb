@@ -1,11 +1,11 @@
 <div class="container">
   <h2 class="admin-customers-edit-title">会員編集画面</h2>
 
-  <%= form_for(@customer, html: { class: "form-inline"}) do |f| %>
-    <table class="row table admin-customers-show-table">
+  <%= form_for([:admin, @customer], html: { class: "form-inline"}) do |f| %>
+    <table class="row table admin-customers-edit-table">
       <tr>
-        <th class="col-xs-3"><%= f.label "会員ID" %></th>
-        <td class="col-xs-9"><%= @customer.id %></td>
+        <th class="col-xs-2"><%= f.label "会員ID" %></th>
+        <td class="col-xs-10"><%= @customer.id %></td>
       </tr>
       <tr>
         <th><%= f.label "氏名" %></th>
@@ -26,7 +26,7 @@
       </tr>
       <tr>
         <th><%= f.label "住所" %></th>
-        <td><%= f.text_field :address, class:"form-control" %></td>
+        <td><%= f.text_field :address, class:"form-control", style:"width: 60%;" %></td>
       </tr>
       <tr>
         <th><%= f.label "電話番号" %></th>
@@ -39,14 +39,14 @@
       <tr>
         <th><%= f.label "会員ステータス" %></th>
         <td>
-          <%= f.label "有効" %>
-          <%= f.radio_button :admittion_status, :validity, :checked => (@customer.admittion_status == :validity) %>
-          <%= f.label "無効" %>
-          <%= f.radio_button :admittion_status, :withdraw, :checked => (@customer.admittion_status == :withdraw)  %>
+          <%= f.label "有効", for: "customer_admittion_status_validity"  %>
+          <%= f.radio_button :admittion_status, :validity, :checked => (@customer.admittion_status == "validity") %>
+          <%= f.label "無効", for: "customer_admittion_status_withdraw" %>
+          <%= f.radio_button :admittion_status, :withdraw, :checked => (@customer.admittion_status == "withdraw")  %>
         </td>
       </tr>
     </table>
-    
+
     <div class="row">
       <%= f.submit "変更を保存する", class:"btn btn-primary" %>
     </div>
