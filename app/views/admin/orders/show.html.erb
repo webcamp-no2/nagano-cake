@@ -27,7 +27,7 @@
 							<td class="col-xs-9">
 								<%= form_for [:admin, @order] do |f| %>
 									<%= f.select :status, Order.statuses.keys.to_a %>
-									<%= f.submit '更新' %>
+									<%= f.submit '更新', class:"btn btn-success" %>
 								<% end %>
 							</td>
 						</tr>
@@ -55,12 +55,14 @@
 							<td><%= order_product.ordered_price %></td>
 							<td><%= order_product.count %></td>
 							<td><%= order_product.subtotal_price %>円</td>
+							<%= form_for [:admin, order_product] do |f| %>
 							<td>
-								<%= form_for [:admin, order_product] do |f| %>
-									<%= f.select :production_status, OrderProduct.production_statuses.keys.to_a %>
-									<%= f.submit '更新' %>
-								<% end %>
+								<%= f.select :production_status, OrderProduct.production_statuses.keys.to_a %>
 							</td>
+							<td>
+								<%= f.submit '更新', class:"btn btn-success" %>
+							</td>
+							<% end %>
 						</tr>
 						<% end %>
 					</tbody>
