@@ -1,7 +1,7 @@
 class Admin::ProductsController < Admin::BaseController
 
   def index
-    @products = Product.all.order(created_at: :desc)
+    @products = Product.page(params[:page]).reverse_order
   end
 
   def new
@@ -11,7 +11,7 @@ class Admin::ProductsController < Admin::BaseController
   def create
     @product = Product.new(product_params)
     if @product.save
-      redirect_to admin_product_path(@product.id)
+      redirect_to admin_product_path(@product.id), notice:'商品を作成しました'
     else
       render 'new'
     end
@@ -24,7 +24,7 @@ class Admin::ProductsController < Admin::BaseController
   def update
     @product = Product.find(params[:id])
     if @product.update(product_params)
-      redirect_to admin_product_path(@product.id)
+      redirect_to admin_product_path(@product.id), notice:'商品情報を更新しました'
     else
       render 'edit'
     end
