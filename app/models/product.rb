@@ -5,10 +5,13 @@ class Product < ApplicationRecord
 
   attachment :image
 
-  validates :image, presence: true
-  validates :name, presence: true, length: {minimum: 1, maximum:15}
-  validates :description, presence: true
-  validates :genre_id, presence: true
-  validates :price, presence: true
+  with_options presence: true do
+    validates :image, presence: true
+    validates :name, presence: true, length: {minimum: 1, maximum:15}
+    validates :description, presence: true
+    validates :genre_id, presence: true
+    validates :price, presence: true
+  end
+
   validates :sales_status, inclusion: {in: [true, false]}
 end
