@@ -1,2 +1,64 @@
-<h1>Admin::Customers#edit</h1>
-<p>Find me in app/views/admin/customers/edit.html.erb</p>
+<div class="container">
+  <h2 class="admin-customers-edit-title">会員編集画面</h2>
+
+  <%= form_for([:admin, @customer], html: { class: "form-inline"}) do |f| %>
+    <% if @customer.errors.any? %>
+      <div id="error_explanation">
+        <h3><%= @customer.errors.count %> errors prohibited this obj from being saved:</h3>
+        <ul>
+        <% @customer.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <table class="row table admin-customers-edit-table">
+      <tr>
+        <th class="col-xs-2"><%= f.label "会員ID" %></th>
+        <td class="col-xs-10"><%= @customer.id %></td>
+      </tr>
+      <tr>
+        <th><%= f.label "氏名" %></th>
+        <td>
+          <%= f.text_field :last_name, class:"form-control" %>
+          <%= f.text_field :first_name, class:"form-control" %>
+        </td>
+      </tr>
+      <tr>
+        <th><%= f.label "フリガナ" %></th>
+        <td>
+          <%= f.text_field :kana_last_name, class:"form-control" %>
+          <%= f.text_field :kana_first_name, class:"form-control" %>
+        </td>
+      </tr>
+        <th><%= f.label "郵便番号" %></th>
+        <td><%= f.text_field :zip_code, class:"form-control" %></td>
+      </tr>
+      <tr>
+        <th><%= f.label "住所" %></th>
+        <td><%= f.text_field :address, class:"form-control", style:"width: 60%;" %></td>
+      </tr>
+      <tr>
+        <th><%= f.label "電話番号" %></th>
+        <td><%= f.text_field :tel, class:"form-control" %></td>
+      </tr>
+      <tr>
+        <th><%= f.label "メールアドレス" %></th>
+        <td><%= f.text_field :email, class:"form-control" %></td>
+      </tr>
+      <tr>
+        <th><%= f.label "会員ステータス" %></th>
+        <td>
+          <%= f.label "有効", for: "customer_admittion_status_validity"  %>
+          <%= f.radio_button :admittion_status, :validity, :checked => (@customer.admittion_status == "validity") %>
+          <%= f.label "無効", for: "customer_admittion_status_withdraw" %>
+          <%= f.radio_button :admittion_status, :withdraw, :checked => (@customer.admittion_status == "withdraw")  %>
+        </td>
+      </tr>
+    </table>
+
+    <div class="row">
+      <%= f.submit "変更を保存する", class:"btn btn-success" %>
+    </div>
+  <% end %>
+</div>

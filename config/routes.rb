@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   devise_for :customers
   devise_for :admins, controllers: {
     sessions: "admin/devise/sessions",
@@ -10,6 +11,7 @@ Rails.application.routes.draw do
   namespace :admin do
     get 'homes/top'
     resources :orders, except: [:new, :create, :destroy]
+    resources :order_products, except: [:new, :create, :edit, :show, :destroy, :index]
     resources :customers, except: [:new, :create, :destroy]
     resources :products, except: :destroy
     resources :genres, except: [:new, :show, :destroy]

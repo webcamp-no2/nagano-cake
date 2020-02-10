@@ -1,3 +1,26 @@
 // Place all the styles related to the customers controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+//customers
+.admin-customers-index-title {
+  margin-bottom: 30px;
+}
+
+.admin-customers-index-paginate {
+  text-align: center;
+}
+
+.admin-customers-edit-table th,
+.admin-customers-edit-table td {
+  border: none !important;
+  line-height: 2em !important;
+}
+
+.admin-customers-edit-table .field_with_errors {
+  display: inline-block
+}
+
+.admittion_status_label {
+  margin-left: 5px;
+}
+//customers/
