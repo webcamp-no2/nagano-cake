@@ -17,7 +17,7 @@
       <h2>商品編集画面</h2>
       <%= attachment_image_tag @product, :image, :fill, 100, 100 %>
       <%= f.attachment_field :image %>
-      <img id="file-preview">
+      <%= image_tag 'sample_image.jpeg', id: "file-preview", :size => '350x300' %>
     </div>
     <div class="col-xs-2"></div>
     <!-- レイアウト上の空要素 -->

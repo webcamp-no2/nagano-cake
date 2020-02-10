@@ -14,4 +14,5 @@ class Product < ApplicationRecord
   end
 
   validates :sales_status, inclusion: {in: [true, false]}
+
 end
