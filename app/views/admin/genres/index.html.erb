@@ -6,7 +6,7 @@
 
 			<!-- error-message -->
 			<% if @genre.errors.any? %>
-			<div class="error_explanation">
+			<div class="error_explanation genre-error">
 			  <h2><%= @genre.errors.count %> errors prohibited this obj from being saved:</h2>
 			  <ul>
 			  <% @genre.errors.full_messages.each do |message| %>

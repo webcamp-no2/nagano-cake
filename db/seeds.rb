@@ -68,7 +68,7 @@ end
     image_id: 'default', # not nullのため入れている。画像表示する時falloutの状態にしたいが、エラーになるかも
     description: Faker::Food.description,
     price: Faker::Number.between(from: 100, to: 1000),
-    sales_status: Faker::Boolean.boolean
+    sales_status: Faker::Boolean.boolean(true_ratio: 0.7)
   )
 end
 # product/
@@ -87,7 +87,7 @@ Customer.find_each do |customer|
   # delivery/
 
   # order
-  3.times do |num|
+  Faker::Number.within(range: 5..10).times do |num|
     Order.create!(
       customer_id: customer.id,
       payment_method: rand(2) == 1 ? "銀行振込" : "クレジットカード",
@@ -96,25 +96,14 @@ Customer.find_each do |customer|
       delivery_address: Delivery.where(customer_id: customer.id).sample.address,
       delivery_name: Delivery.where(customer_id: customer.id).sample.name,
       postage: 800,
-      payment: Faker::Number.between(from: 1000, to: 20000)
+      payment: Faker::Number.between(from: 1000, to: 10000)
     )
   end
-  # order/
-
-  # order product
-  # 全てのオーダーに1つ以上の注文商品を持たせる
+  # orderの作成日を10日前～今日までの期間でばらけさせる
   Order.all.each do |order|
-    Faker::Number.within(range: 1..5).times do |num|
-      OrderProduct.create!(
-        product_id: Product.all.sample.id,
-        order_id: order.id,
-        count: Faker::Number.within(range: 1..20),
-        ordered_price: Faker::Number.between(from: 100, to: 1000),
-        production_status: Faker::Number.within(range: 0..4)
-      )
-    end
+    order.update(created_at: (rand*10).days.ago)
   end
-  # order product/
+  # order/
 
   # cart item
   3.times do |num|
@@ -128,3 +117,27 @@ Customer.find_each do |customer|
 
 end
 # customer/
+
+# order product
+products = Product.all.order("RANDOM()")
+Order.all.each do |order|
+  1..Product.count.times do |num|
+    OrderProduct.create!(
+      product_id: products[num-1].id, # ランダムに取得した商品を順番に対応付ける
+      order_id: order.id,
+      count: Faker::Number.within(range: 1..5),
+      ordered_price: 0,
+      production_status: Faker::Number.within(range: 0..4)
+    )
+  end
+end
+# order product/
+
+# order_productの支払い金額（ordered_priceを計算する）
+OrderProduct.all.each do |order_product|
+  order_product.update(ordered_price: order_product.product.price*order_product.count)
+end
+# orderの請求金額（payment）を計算する
+Order.all.each do |order|
+  order.update(payment: order.order_products.inject(0){|result, order_product| result + order_product.ordered_price })
+end
