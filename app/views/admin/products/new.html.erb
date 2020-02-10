@@ -1,2 +1,51 @@
-<h2>商品 新規登録画面</h2>
-
+<% if @product.errors.any? %>
+<h4 class="errors-message">
+  項目が記入されてない箇所があります。
+</h4>
+<div id ="error_explanation" class="alert alert-danger">
+  <ul>
+    <% @product.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+<div class="container">
+  <div class="row">
+    <%= form_for(@product, url: admin_products_path) do |f| %>
+    <div class="col-xs-5">
+    <h2>商品登録画面</h2>
+    <%= f.attachment_field :image %>
+    </div>
+    <div class="col-xs-2"></div>
+    <!-- レイアウト上の空要素 -->
+    <div class="col-xs-5">
+      <table class="new-form-table">
+        <tbody>
+          <tr>
+            <th>商品名</th>
+            <td><%= f.text_field :name, class: "form-control" %></td>
+          </tr>
+          <tr>
+            <th>商品説明</th>
+            <td><%= f.text_area :description, class: "form-control" %></td>
+          </tr>
+          <tr>
+            <th>ジャンル</th>
+            <td><%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "--選択してください--" %></td>
+          </tr>
+          <tr>
+            <th>税抜き価格</th>
+            <td><%= f.text_field :price, class: "form-control" %></td>
+          </tr>
+          <tr>
+            <th>販売ステータス</th>
+            <td><%= f.select :sales_status, [["販売停止中",0],["販売中",1]], include_blank: "--選択してください--" %></td>
+          </tr>
+        </tbody>
+      </table>
+      <%= f.submit '作成', class: "btn btn-success btn-new-register btn-lg" %>
+    </div>
+    <% end %>
+  </div>
+</div>
