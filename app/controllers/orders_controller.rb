@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   def index
-    @customer = Customer.find(current_customer)
+    @customer = Customer.find(1)
   end
 
   def new

@@ -2,9 +2,8 @@
 	<div class="row">
 		<div class="col-xs-10 col-xs-offset-1">
 			<h2>注文履歴一覧</h2>
-			<div>
+			<div class="orders-table">
 				<table class="table">
-					<caption>table title and/or explanatory text</caption>
 					<thead>
 						<tr>
 							<th>注文日</th>
@@ -15,15 +14,23 @@
 							<th>注文詳細</th>
 						</tr>
 					</thead>
-					<tbody>
-						<%= @customer.orders.each do |order| %>
+					<tbody class="order-items">
+						<% @customer.orders.each do |order| %>
 						<tr>
 							<td><%= order.created_at %></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
+							<td>
+								<%= order.zip_code %><br>
+								<%= order.delivery_address %><br>
+								<%= order.delivery_name %>
+							</td>
+							<td>
+								<% order.order_products.each do |order_product| %>
+									<%= order_product.product.name %><br>
+								<% end %>
+							</td>
+							<td><%= order.payment %>円</td>
+							<td><%= order.status %></td>
+							<td><%= link_to "表示する", order_path(order.id), class:"btn btn-primary" %></td>
 						</tr>
 						<% end %>
 					</tbody>
