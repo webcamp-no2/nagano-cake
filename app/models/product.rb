@@ -10,9 +10,8 @@ class Product < ApplicationRecord
     validates :name, length: {minimum: 1, maximum:15}
     validates :description
     validates :genre_id
-    validates :price
+    validates :price, numericality: true
   end
-  validates :price, numericality: true
   validates :sales_status, inclusion: {in: [true, false]}
 
 end
