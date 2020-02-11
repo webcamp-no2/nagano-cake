@@ -2,25 +2,25 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 //customers
-.admin-customers-index-title {
-  margin-bottom: 30px;
+.mypage-title {
+  margin-bottom: 20px;
 }
 
-.admin-customers-index-paginate {
-  text-align: center;
+.mypage-register-info-table {
+  width: 70% !important;
 }
 
-.admin-customers-edit-table th,
-.admin-customers-edit-table td {
-  border: none !important;
-  line-height: 2em !important;
-}
-
-.admin-customers-edit-table .field_with_errors {
-  display: inline-block
-}
-
-.admittion_status_label {
-  margin-left: 5px;
+.mypage-flex-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  span {
+    flex-basis: 100px;
+    font-weight: bold;
+    font-size: 1.2em;
+  }
+  a {
+    margin-right: 5px;
+  }
 }
 //customers/

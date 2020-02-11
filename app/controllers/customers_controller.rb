@@ -6,6 +6,7 @@ class CustomersController < ApplicationController
   end
 
   def show
+    @customer = Customer.find(1) # TODO: sessionから取得する
   end
 
   def withdraw_confirm
