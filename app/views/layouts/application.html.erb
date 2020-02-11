@@ -4,7 +4,8 @@
     <title>NaganoCake</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <!-- fontawasomeの呼び出し -->
+    <script src="https://kit.fontawesome.com/e3af747f76.js" crossorigin="anonymous"></script>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -36,12 +37,13 @@
               <%  if admin_signed_in? %>
                 <li><%= link_to "ログアウト", destroy_customer_session_path, method: :delete %></li>
               <% end %>
+              <li><%= link_to(cart_items_path) do %><i class="fas fa-shopping-cart"></i><% end %></li>
             </ul>
           </div>
         </div>
         <form class="navbar-form navbar-right" role="search">
           <div class="form-group">
-            <input type="text" class="form-control" placeholder="検索キーワード">
+            <input type="text" class="form-control" placeholder="商品名で探す">
           </div>
           <button type="submit" class="btn btn-default search-btn">検索</button>
           <!-- 検索ボタンにsearch-btn class追加 -->
@@ -51,5 +53,29 @@
     <!-- /header -->
 
     <%= yield %>
+
+    <!-- footer -->
+    <footer>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="footer-logo-box col-xs-2">
+            <%= image_tag 'cakes.png', :size =>'100x95' %>
+          </div>
+          <div class="footer-info-box col-xs-8">
+            <p><i class="fas fa-home"></i>  東京都××××××××××××</p>
+            <p><i class="fas fa-phone"></i>  000-0000-0000</p>
+            <p>
+              <i class="fab fa-instagram"></i>
+              <i class="fab fa-twitter"></i>
+              <i class="fab fa-facebook-f"></i>
+            </p>
+          </div>
+          <div class="footer-copywrite-box col-xs-2">
+            <p>©copyright</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- fotter -->
   </body>
 </html>
