@@ -1,2 +1,34 @@
-<h1>Orders#index</h1>
-<p>Find me in app/views/orders/index.html.erb</p>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-10 col-xs-offset-1">
+			<h2>注文履歴一覧</h2>
+			<div>
+				<table class="table">
+					<caption>table title and/or explanatory text</caption>
+					<thead>
+						<tr>
+							<th>注文日</th>
+							<th>配送先</th>
+							<th>注文商品</th>
+							<th>支払金額</th>
+							<th>ステータス</th>
+							<th>注文詳細</th>
+						</tr>
+					</thead>
+					<tbody>
+						<%= @customer.orders.each do |order| %>
+						<tr>
+							<td><%= order.created_at %></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<% end %>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
