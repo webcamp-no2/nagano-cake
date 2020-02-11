@@ -12,7 +12,7 @@ class Product < ApplicationRecord
     validates :genre_id
     validates :price
   end
-
+  validates :price, numericality: true
   validates :sales_status, inclusion: {in: [true, false]}
 
 end
