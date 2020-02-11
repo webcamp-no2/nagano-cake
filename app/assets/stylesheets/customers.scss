@@ -29,10 +29,16 @@
 .ec-customer-edit-title-group {
   display: flex;
   align-items: center;
+  margin-top: 50px;
+  margin-bottom: 30px;
+  a {
+    margin-left: 10px;
+  }
 }
 
 .ec-customers-edit-title {
   display: inline-block;
+  margin: 0;
 }
 //登録情報編集画面/
 

@@ -15,7 +15,7 @@
         </ul>
       </div>
     <% end %>
-    <table class="row table admin-customers-edit-table">
+    <table class="table admin-customers-edit-table">
       <tr>
         <th class="col-xs-2"><%= f.label "会員ID" %></th>
         <td class="col-xs-10"><%= @customer.id %></td>
@@ -51,7 +51,7 @@
       </tr>
     </table>
 
-    <div class="row">
+    <div>
       <%= f.submit "編集内容を保存する", class:"btn btn-success" %>
     </div>
   <% end %>
