@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
-
-  devise_for :customers
+  
+  devise_for :customer, controllers: {
+    sessions: "customers_devise/sessions",
+    passwords: "customers_devise/passwords",
+    registrations: "customers_devise/registrations"
+  }
   devise_for :admins, controllers: {
     sessions: "admin/devise/sessions",
     passwords: "admin/devise/passwords",
@@ -27,6 +31,7 @@ Rails.application.routes.draw do
       patch 'withdraw'
     end
   end
+  
   resources :orders, except: [:edit, :destroy] do
     member do
       get 'thanks'
