@@ -9,3 +9,16 @@ header .navbar-brand {
 .search-btn {
   margin-right: 45px;
 }
+/*エラーメッセージ*/
+.errors-message {
+  color: red;
+}
+/*new,editフォームの行方向、列方向の余白設定*/
+.new-form-table, .edit-form-table {
+  border-collapse: separate;
+  border-spacing: 5px 40px;
+}
+/*サクセスメッセージ*/
+#notice {
+  color: green;
+}

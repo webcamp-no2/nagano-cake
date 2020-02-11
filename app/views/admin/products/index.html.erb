@@ -1,2 +1,29 @@
-<h1>Admin::Products#index</h1>
-<p>Find me in app/views/admin/products/index.html.erb</p>
+<div class="container">
+  <h2>商品一覧画面</h2>
+  <%= link_to "商品登録", new_admin_product_path, class: "btn btn-primary btn-new-register btn-lg"; %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>商品ID</th>
+        <th>商品名</th>
+        <th>税抜き価格</th>
+        <th>ジャンル</th>
+        <th>ステータス</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @products.each do |product| %>
+      <tr>
+        <td><%= product.id %></td>
+        <td><%= link_to product.name, admin_product_path(product.id) %></td>
+        <td><%= "#{product.price}円" %></td>
+        <td><%= product.genre.name %></td>
+        <td><%= product.sales_status ? "販売中" : "販売停止中" %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <div class="row text-center">
+    <%= paginate @products, class: "paginate" %>
+  </div>
+</div>

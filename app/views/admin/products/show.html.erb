@@ -1,2 +1,30 @@
-<h1>Admin::Products#show</h1>
-<p>Find me in app/views/admin/products/show.html.erb</p>
+<div class="container">
+  <p id ="notice"><%= flash[:notice] %></p>
+  <h2>商品詳細画面</h2>
+  <%= attachment_image_tag @product, :image, :fill, 100, 100 %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>商品名</th>
+        <th>商品説明</th>
+        <th>ジャンル</th>
+        <th>税抜価格</th>
+        <th>税込価格</th>
+        <th>販売ステータス</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= @product.name %></td>
+        <td><%= @product.description %></td>
+        <td><%= @product.genre.name %></td>
+        <td><%= "#{@product.price}円" %></td>
+        <td><%= "#{(@product.price * Constants::TAX).round }円" %></td>
+        <td><%= @product.sales_status ? "販売中" : "販売停止中" %></td>
+      </tr>
+    </tbody>
+  </table>
+  <div>
+    <%= link_to "編集", edit_admin_product_path(@product.id), class: "btn btn-success btn-new-register btn-lg"; %>
+  </div>
+</div>
