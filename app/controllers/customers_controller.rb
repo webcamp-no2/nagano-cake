@@ -1,5 +1,6 @@
 class CustomersController < ApplicationController
   def edit
+    @customer = Customer.find(1) # TODO: sessionから取得する
   end
 
   def update

@@ -25,6 +25,17 @@
 }
 //マイページ/
 
+//登録情報編集画面
+.ec-customer-edit-title-group {
+  display: flex;
+  align-items: center;
+}
+
+.ec-customers-edit-title {
+  display: inline-block;
+}
+//登録情報編集画面/
+
 .admittion_status_label {
   margin-left: 5px;
 }
