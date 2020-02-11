@@ -1,2 +1,17 @@
-<h1>Products#index</h1>
-<p>Find me in app/views/products/index.html.erb</p>
+<h2>ケーキ</h2>
+<p><%= "(全#{Product.count}件)" %></p>
+<% @products.each do |product| %>
+<%= link_to product_path(product.id) do %>
+<%= attachment_image_tag product, :image, :size => '300x300' %>
+<%= product.name %>
+<% end %>
+<%= "¥#{product.price}" %>
+<% end %>
+<div class="row text-center">
+  <%= paginate @products, class: "paginate" %>
+</div>
+
+<h4>ジャンル検索</h4>
+<% @genres.each do |genre| %>
+<%= link_to genre.name %>
+<% end %>

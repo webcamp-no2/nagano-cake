@@ -1,2 +1,13 @@
-<h1>Products#show</h1>
-<p>Find me in app/views/products/show.html.erb</p>
+<%= attachment_image_tag @product, :image, :size => '350x300' %>
+<%= @product.name %>
+<%= @product.description %>
+<%= "¥#{@product.price}(税込)" %>
+<%= form_for(@cart_item, url: cart_items_path) do |f|  %>
+  <%= f.select :count,(1..10).to_a %>
+  <%= f.submit 'カートに入れる', class: "btn btn-success btn-new-register btn-lg"%>
+<% end %>
+
+<h4>ジャンル検索</h4>
+<% @genres.each do |genre| %>
+<%= link_to genre.name %>
+<% end %>
