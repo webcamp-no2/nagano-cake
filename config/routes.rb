@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   
-  devise_for :customer, controllers: {
+  root 'homes#top'
+
+  devise_for :customers, controllers: {
     sessions: "customers_devise/sessions",
     passwords: "customers_devise/passwords",
     registrations: "customers_devise/registrations"
@@ -13,6 +15,7 @@ Rails.application.routes.draw do
   
   # admin
   namespace :admin do
+    root 'homes#top'
     get 'homes/top'
     resources :orders, except: [:new, :create, :destroy]
     resources :order_products, except: [:new, :create, :edit, :show, :destroy, :index]
