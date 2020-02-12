@@ -33,6 +33,7 @@ Rails.application.routes.draw do
       get 'confirm'
     end
   end
+  delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
   resources :cart_items, except: [:new, :edit, :show]
   resources :products, only: [:index, :show]
   resources :delivery_addresses, except: [:new, :show]
