@@ -1,6 +1,6 @@
 class CartItemsController < ApplicationController
   def index
-    @customer = Customer.find(1)
+    @customer = Customer.find(current_customer.id)
   end
 
   def create
