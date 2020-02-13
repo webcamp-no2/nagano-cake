@@ -1,26 +1,92 @@
 // Place all the styles related to the customers controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-//customers
-.admin-customers-index-title {
+//マイページ
+.mypage-title {
+  margin-bottom: 20px;
+}
+
+.mypage-register-info-table {
+  width: 70% !important;
+}
+
+.mypage-flex-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  span {
+    flex-basis: 100px;
+    font-weight: bold;
+    font-size: 1.2em;
+  }
+  a {
+    margin-right: 5px;
+  }
+}
+//マイページ/
+
+//登録情報編集画面
+.ec-customer-edit-title-group {
+  display: flex;
+  align-items: center;
+  margin-top: 50px;
   margin-bottom: 30px;
+  a {
+    margin-left: 10px;
+  }
 }
 
-.admin-customers-index-paginate {
+.ec-customers-edit-title {
+  display: inline-block;
+  margin: 0;
+}
+//登録情報編集画面/
+
+//退会確認画面
+.withdraw-confirm-title {
+  font-size: 2.5em;
+  font-weight: bold;
+  margin-bottom: 40px;
+}
+
+.withdraw-confirm-message {
+  font-size: 1.2em;
+  margin-bottom: 40px;
+}
+
+.withdraw-confirm-box {
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   text-align: center;
+  a {
+    width: 8em;
+    &:first-child {
+      margin-right: 30px;
+    }
+  }
 }
 
-.admin-customers-edit-table th,
-.admin-customers-edit-table td {
-  border: none !important;
-  line-height: 2em !important;
+.withdraw-confirm-btn-group {
+  margin-right: 20px;
 }
-
-.admin-customers-edit-table .field_with_errors {
-  display: inline-block
-}
+//退会確認画面/
 
 .admittion_status_label {
   margin-left: 5px;
 }
-//customers/
+
+//customers/ログイン画面
+.customer-session-box {
+	margin-top: 70px;
+}
+
+.customer-session-box form {
+	margin-top: 30px;
+}
+
+.resistration-box div {
+	margin-top: 20px;
+}
