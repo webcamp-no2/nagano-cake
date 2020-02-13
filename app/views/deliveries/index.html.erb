@@ -1,0 +1,67 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="delivery-index col-xs-10 col-xs-offset-1">
+			<h2>配送先一覧/登録</h2>
+			<!-- 配送先新規登録 -->
+			<div class="create-delivery-section">
+				<div class="create-delivery-table row">
+					<div class="col-xs-7">
+						<table class="table">
+							<tbody>
+								<%= form_for(@delivery_address) do |f| %>
+								<tr class="row">
+									<th class="col-xs-3">郵便番号</th>
+									<td class="col-xs-9 row">
+										<div class="col-xs-4"><%= f.text_field :zip_code, class:"form-control" %></div>
+									</td>
+								</tr>
+								<tr class="row">
+									<th>住所</th>
+									<td>
+										<div class="col-xs-10"><%= f.text_field :address, class:"form-control" %></div>
+									</td>
+								</tr>
+								<tr class="row">
+									<th>宛名</th>
+									<td>
+										<div class="col-xs-5"><%= f.text_field :name, class:"form-control" %></div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div class="create-delivery-btn-wrap row">
+									<%= f.submit '登録する', class:"create-delivery-btn btn btn-primary" %>
+								<% end %>
+				</div>
+			</div>
+			<!-- 配送先一覧 -->
+			<div class="delivery-index-section row">
+				<table class="table">
+					<thead>
+						<tr>
+							<th>郵便番号</th>
+							<th>住所</th>
+							<th>宛名</th>
+							<th></th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+						<% @customer.deliveries.each do |delivery| %>
+						<tr>
+							<td><%= delivery.zip_code %></td>
+							<td><%= delivery.address %></td>
+							<td><%= delivery.name %></td>
+							<td><%= link_to "編集する", edit_delivery_path(delivery.id), class:"btn btn-success" %></td>
+							<td><%= link_to "削除する", delivery_path(delivery.id), method: :delete, class:"btn btn-danger" %></td>
+						</tr>
+						<% end %>
+					</tbody>
+				</table>
+					<div class="return-mypage-btn-wrap"><%= link_to "マイページへ戻る", customer_path(current_customer.id), class:"btn btn-primary" %></div>
+			</div>
+		</div>
+	</div>
+</div>
