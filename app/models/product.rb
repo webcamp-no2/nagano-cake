@@ -14,4 +14,8 @@ class Product < ApplicationRecord
   end
   validates :sales_status, inclusion: {in: [true, false]}
 
+  #単価（税込）
+  def price_with_tax
+    (price * Constants::TAX).round
+  end
 end
