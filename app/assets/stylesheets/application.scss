@@ -18,6 +18,10 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
+// fontawasomeの呼び出し
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
 .error_explanation{
 	color: red;
 	background-color: pink;
