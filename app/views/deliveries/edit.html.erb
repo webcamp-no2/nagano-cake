@@ -1,11 +1,23 @@
 <div class="container">
 	<div class="row">
-		<h2>配送先編集</h2>
+	<h2>配送先編集</h2>
+		<!-- error-message -->
+		<% if @delivery_address.errors.any? %>
+			<div class="error_explanation">
+			  <h2><%= @delivery_address.errors.count %> 件のエラーのため変更点を保存できませんでした。</h2>
+			  <ul>
+			  <% @delivery_address.errors.full_messages.each do |message| %>
+			    <li><%= message %></li>
+			  <% end %>
+			  </ul>
+		    </div>
+			<% end %>
+		<!-- / -->
+		<%= form_for(@delivery_address) do |f| %>
 		<div class="edit-delivery-table">
 			<div>
 				<table class="table">
 					<tbody>
-						<%= form_for(@delivery_address) do |f| %>
 						<tr class="row">
 							<th class="col-xs-3">郵便番号</th>
 							<td class="col-xs-9 row">
@@ -21,7 +33,9 @@
 						<tr class="row">
 							<th>宛名</th>
 							<td>
-								<div class="col-xs-5"><%= f.text_field :name, class:"form-control" %></div>
+								<div class="col-xs-5">
+									<%= f.text_field :name, class:"form-control" %>
+								</div>
 							</td>
 						</tr>
 					</tbody>
@@ -29,8 +43,8 @@
 			</div>
 		</div>
 		<div class="update-delivery-btn-wrap row">
-							<%= f.submit '登録する', class:"create-delivery-btn btn btn-primary" %>
-						<% end %>
+			<%= f.submit '登録する', class:"create-delivery-btn btn btn-primary" %>
 		</div>
+		<% end %>
 	</div>
 </div>
