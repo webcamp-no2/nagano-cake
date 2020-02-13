@@ -38,7 +38,7 @@ class CustomersDevise::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # protected
+  protected
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params
@@ -60,7 +60,14 @@ class CustomersDevise::RegistrationsController < Devise::RegistrationsController
   #   super(resource)
   # end
 
+  # password無しでも更新できるようにする
+
   def update_resource(resource, params)
     resource.update_without_password(params)
+  end
+
+  # ユーザー情報更新後、マイページに遷移させる
+  def after_update_path_for(resource)
+    customer_path(resource)
   end
 end

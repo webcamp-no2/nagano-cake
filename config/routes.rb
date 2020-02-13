@@ -7,6 +7,10 @@ Rails.application.routes.draw do
     passwords: "customers_devise/passwords",
     registrations: "customers_devise/registrations"
   }
+  devise_scope :customers do
+    match '/customers/sign_out', to: 'customers_devise/session#destroy', via: Devise.mappings[:customer].sign_out_via
+  end
+
   devise_for :admins, controllers: {
     sessions: "admin/devise/sessions",
     passwords: "admin/devise/passwords",

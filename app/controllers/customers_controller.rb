@@ -14,5 +14,10 @@ class CustomersController < ApplicationController
   end
 
   def withdraw
+    @customer = Customer.find(current_customer.id)
+    if @customer.update!(admittion_status: "withdraw")
+      
+      redirect_to customers_sign_out_path
+    end
   end
 end
