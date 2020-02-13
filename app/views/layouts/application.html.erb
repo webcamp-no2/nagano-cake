@@ -9,12 +9,7 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <% if current_customer %>
-    <%= link_to 'ログアウト', destroy_customer_session_path, method: :delete, class: "btn btn-danger" %>
-  <% else %>
-    <%= link_to 'サインアップ', '#', class: "btn btn-primary" %>
-  <% end%>
-
+  
   <body>
     <%= yield %>
   </body>
