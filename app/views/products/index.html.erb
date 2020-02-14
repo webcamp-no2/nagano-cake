@@ -15,9 +15,13 @@
       </table>
     </div>
     <div class="col-xs-9 col-xs-offset-1 product-card-content">
-      <h2>ケーキ</h2>
-      <p><%= "(全#{Product.count}件)" %></p>
-      <% @products.each do |product| %>
+      <% if @products_of_genre.present? %>
+        <h2><%= @products_of_genre.first.genre.name %></h2>
+        <p><%= "(全#{Product.count}件)" %></p>
+      <% else %>
+        <h2>このジャンルの商品は現在ありません</h2>
+      <% end %>
+      <% @products_of_genre.each do |product| %>
       <%= link_to product_path(product.id) do %>
       <div class="thumbnail product-thumbnail col-xs-2">
         <%= attachment_image_tag product, :image, :size => '300x300' %>
@@ -32,5 +36,5 @@
   </div>
 </div>
 <div class="row text-center">
-  <%= paginate @products, class: "paginate" %>
+  <%= paginate @products_of_genre, class: "paginate" %>
 </div>
