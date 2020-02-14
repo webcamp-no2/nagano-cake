@@ -47,7 +47,9 @@ Rails.application.routes.draw do
   end
   delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
   resources :cart_items, except: [:new, :edit, :show]
-  resources :products, only: [:index, :show]
+  resources :products, only: [:index, :show] do
+    get 'search', on: :collection
+  end
   resources :delivery_addresses, except: [:new, :show]
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
