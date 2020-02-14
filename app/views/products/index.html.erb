@@ -1,2 +1,40 @@
-<h1>Products#index</h1>
-<p>Find me in app/views/products/index.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-2">
+      <table class="table table-bordered table-hover">
+        <tr>
+          <h4>ジャンル検索</h4>
+        </tr>
+        <% @genres.each do |genre| %>
+        <tr>
+          <td>
+            <%= link_to genre.name %>
+          </td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+    <div class="col-xs-9 col-xs-offset-1 product-card-content">
+      <% if @products_of_genre.present? %>
+        <h2><%= @products_of_genre.first.genre.name %></h2>
+        <p><%= "(全#{Product.count}件)" %></p>
+      <% else %>
+        <h2>このジャンルの商品は現在ありません</h2>
+      <% end %>
+      <% @products_of_genre.each do |product| %>
+      <%= link_to product_path(product.id) do %>
+      <div class="thumbnail product-thumbnail col-xs-2">
+        <%= attachment_image_tag product, :image, :size => '300x300' %>
+        <div class="caption">
+          <%= product.name %>
+          <%= "¥#{product.price}" %>
+        </div>
+      </div>
+      <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
+<div class="row text-center">
+  <%= paginate @products_of_genre, class: "paginate" %>
+</div>

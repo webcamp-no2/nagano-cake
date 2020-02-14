@@ -1,2 +1,26 @@
-<h1>Products#show</h1>
-<p>Find me in app/views/products/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-2">
+      <table class="table table-bordered table-hover">
+        <tr>
+          <h4>ジャンル検索</h4>
+        </tr>
+        <% @genres.each do |genre| %>
+        <tr>
+          <td>
+            <%= link_to genre.name %>
+          </td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+    <%= attachment_image_tag @product, :image, :size => '350x300' %>
+    <%= @product.name %>
+    <%= @product.description %>
+    <%= "¥#{@product.price}(税込)" %>
+    <%= form_for(@cart_item, url: cart_items_path(@product.id), class: "form-control") do |f|  %>
+    <%= f.select :count,(1..10).to_a %>
+    <%= f.submit 'カートに入れる', class: "btn btn-success btn-new-register btn-lg"%>
+    <% end %>
+  </div>
+</div>
