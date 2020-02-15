@@ -20,4 +20,14 @@ class Customer < ApplicationRecord
     validates :tel
     validates :email, format: {with: VALID_EMAIL_REGEX}
   end
+
+  # カートアイテム合計
+    # 合計
+  def cart_item_sum
+    total = 0
+    cart_items.each do |cart_item|
+      total += cart_item.subtotal_price
+    end
+    total
+  end
 end
