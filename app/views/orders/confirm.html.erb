@@ -1,0 +1,67 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="order-confirm col-xs-10 col-xs-offset-1">
+			<h2>注文情報確認</h2>
+			<div class="flex">
+				<div class="confirm-products">
+					<table class="table">
+						<thead>
+							<tr class="active">
+								<th>商品名</th>
+								<th class="text-right">単価（税込）</th>
+								<th class="text-right">数量</th>
+								<th class="text-right">小計</th>
+							</tr>
+						</thead>
+						<tbody>
+							<% @order.order_products.each do |order_product| %>
+							<tr>
+								<td><%= order_product.product.name %></td>
+								<td class="text-right"><%= order_product.ordered_price %>円</td>
+								<td class="text-right"><%= order_product.count %></td>
+								<td class="text-right"><%= order_product.subtotal_price %>円</td>
+							</tr>
+							<% end %>
+						</tbody>
+					</table>
+				</div>
+				<div class="confirm-prise">
+					<table class="table">
+						<tbody>
+							<tr>
+								<th class="active">送料</th>
+								<td class="text-right"><%= @order.postage %>円</td>
+							</tr>
+							<tr>
+								<th class="active">商品合計</th>
+								<td class="text-right"><%= @order.product_sum %>円</td>
+							</tr>
+							<tr>
+								<th class="active">請求金額</th>
+								<td class="text-right"><%= @order.payment %>円</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="confirm-info row">
+				<table>
+					<tr>
+						<th class="col-xs-4">お支払い方法</th>
+						<td class="col-xs-8"><%= @order.payment_method %></td>
+					</tr>
+					<tr>
+						<th class="col-xs-4">お届け先</th>
+						<td class="col-xs-8">
+							<%= @order.zip_code %><%= @order.delivery_address %><br>
+							<%= @order.delivery_name %>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div class="comfirmation-btn-wrap">
+ 				<%= link_to "購入を確定する", thanks_order_path, class:"btn btn-primary" %>
+			</div>
+		</div>
+	</div>
+</div>
