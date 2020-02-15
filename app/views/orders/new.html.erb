@@ -1,5 +1,5 @@
 <h2>購入情報入力</h2>
-<%= form_for(@order, url: orders_path) do |f| %>
+<%= form_for(@order, url: confirm_orders_path) do |f| %>
 <h4>支払い方法</h4>
 <%= f.radio_button :payment_method, :"現金", checked: true %>
 <%= f.label(:payment_method, "現金") %>

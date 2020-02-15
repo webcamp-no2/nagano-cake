@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   root 'homes#top'
 
   devise_for :customers, controllers: {
@@ -42,8 +42,8 @@ Rails.application.routes.draw do
   resources :orders, except: [:edit, :destroy] do
     member do
       get 'thanks'
-      get 'confirm'
     end
+    post 'confirm', on: :collection
   end
 
   delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
