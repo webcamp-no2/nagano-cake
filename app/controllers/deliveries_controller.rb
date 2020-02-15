@@ -1,17 +1,15 @@
 class DeliveriesController < ApplicationController
   def index
-    @delivery_address = Delivery.new
-    @customer = Customer.find(current_customer.id)
+    @delivery = Delivery.new
   end
 
   def create
-    @delivery_address = Delivery.new(delivery_params)
-    @delivery_address.customer_id = current_customer.id
-    if @delivery_address.save
+    @delivery = Delivery.new(delivery_params)
+    @delivery.customer_id = current_customer.id
+    if @delivery.save
       flash[:notice] = "配送先を登録しました"
       redirect_to deliveries_path
     else
-      @customer = Customer.find(current_customer.id)
       render action: :index
     end
   end

@@ -6,9 +6,20 @@
 			<% if flash[:notice] %>
 			  <p class="success-message"><%= flash[:notice] %></p>
 			<% end %>
+			<!-- error-message -->
+			<% if @delivery.errors.any? %>
+			<div class="error_explanation genre-error">
+			  <h2><%= @delivery.errors.count %>件のエラーのため保存できませんでした。</h2>
+			  <ul>
+			  <% @delivery.errors.full_messages.each do |message| %>
+			    <li><%= message %></li>
+			  <% end %>
+			  </ul>
+		    </div>
+			<% end %>
 			<!-- 配送先新規登録 -->
 			<div class="create-delivery-section">
-			<%= form_for(@delivery_address) do |f| %>
+			<%= form_for(@delivery) do |f| %>
 				<div class="create-delivery-table row">
 					<div class="col-xs-7">
 						<table class="table">
@@ -53,13 +64,14 @@
 						</tr>
 					</thead>
 					<tbody>
-						<% @customer.deliveries.each do |delivery| %>
+						<% binding.pry %>
+						<% current_customer.deliveries.each do |customer_delivery| %>
 						<tr>
-							<td><%= delivery.zip_code %></td>
-							<td><%= delivery.address %></td>
-							<td><%= delivery.name %></td>
-							<td><%= link_to "編集する", edit_delivery_path(delivery.id), class:"btn btn-success" %></td>
-							<td><%= link_to "削除する", delivery_path(delivery.id), method: :delete, class:"btn btn-danger" %></td>
+							<td><%= customer_delivery.zip_code %></td>
+							<td><%= customer_delivery.address %></td>
+							<td><%= customer_delivery.name %></td>
+							<td><%= link_to "編集する", edit_delivery_path(customer_delivery.id), class:"btn btn-success" %></td>
+							<td><%= link_to "削除する", delivery_path(customer_delivery.id), method: :delete, class:"btn btn-danger" %></td>
 						</tr>
 						<% end %>
 					</tbody>
