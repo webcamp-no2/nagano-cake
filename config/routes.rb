@@ -38,7 +38,7 @@ Rails.application.routes.draw do
       patch 'withdraw'
     end
   end
-  
+
   resources :orders, except: [:edit, :destroy] do
     member do
       get 'thanks'

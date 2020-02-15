@@ -13,7 +13,6 @@ class OrdersController < ApplicationController
   end
 
   def create
-    binding.pry
     @order = current_customer.orders.build(set_order)
 
     case params[:delivery_address_type]
