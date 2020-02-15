@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   def index
-    @products = Product.page(params[:page]).per(6).reverse_order
+    @products = Product.page(params[:page]).per(18).reverse_order
     @genres = Genre.all
   end
 

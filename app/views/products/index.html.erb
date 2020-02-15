@@ -22,8 +22,8 @@
       <div class="thumbnail product-thumbnail col-xs-2">
         <%= attachment_image_tag product, :image, :size => '300x300' %>
         <div class="caption">
-          <%= product.name %>
-          <%= "¥#{product.price}" %>
+          <p><%= product.name %></p>
+          <p><%= "¥#{product.price}" %></p>
         </div>
       </div>
       <% end %>

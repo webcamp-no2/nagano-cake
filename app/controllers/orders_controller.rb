@@ -1,20 +1,21 @@
 class OrdersController < ApplicationController
-
+​
   def index
   end
-
+​
   def new
+    binding.pry
     @order = Order.new
     @delivery = Delivery.new
   end
-
+​
   def confirm
     @order = Order.new(params[:id])
   end
-
+​
   def create
     @order = current_customer.orders.build(set_order)
-
+​
     case params[:delivery_address_type]
     when "ご自身の住所"
       @order.zip_code = current_customer.zip_code
@@ -32,13 +33,13 @@ class OrdersController < ApplicationController
     @order.payment = @order.total_price
 
     @order.save
-
+​
     redirect_to confirm_order_path(@order.id)
   end
-
+​
   def thanks
   end
-
+​
   def show
     @order = Order.find(params[:id])
   end
