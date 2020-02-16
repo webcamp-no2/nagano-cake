@@ -22,12 +22,12 @@
       </div>
       <% end %>
       <% end %>
-      <div class= "text-center" >
-        <%= paginate @products %>
-      </div>
       <% else %>
       <h2>商品の取り扱いがありません</h2>
       <% end %>
+    </div>
+    <div class= "text-center" >
+      <%= paginate @products %>
     </div>
   </div>
 </div>
