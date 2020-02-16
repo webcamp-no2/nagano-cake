@@ -1,61 +1,46 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>NaganoCake</title>
+    <title>ながのCake</title>
+    <link href="https://fonts.googleapis.com/earlyaccess/kokoro.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Kalam&display=swap" rel="stylesheet">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <!-- fontawasomeの呼び出し -->
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
-  
   <body>
     <header>
-      <nav class="navbar">
-        <div class="container-fluid">
-          <div class="row">
-            <!-- ログイン時はカスタマーの名前を表示 -->
-            <% if customer_signed_in? %>
-              <div class="header-customer-name"><p class="text-right"><%= current_customer.last_name + " " + current_customer.first_name %>様</p></div>
-            <% end %>
-            <!-- / -->
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarEexample5">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-              <p class="navbar-brand">
-                <%= image_tag 'cakes.png', :size =>'100x95' %>
-              </p>
+      <div class="container-fluid">
+        <div class="row">
+          <!-- ログイン時はカスタマーの名前を表示 -->
+          <% if customer_signed_in? %>
+            <div class="header-line"><p class="header-name text-right"><%= current_customer.last_name + " " + current_customer.first_name %>様</p></div>
+          <% end %>
+          <!-- / -->
+          <div class="header-vizual">
+            <div class="logo-container">
+              <i class="fas fa-cheese header-icon"></i>
+              <span class="nagano">ながの</span><span class="cake">CAKE</span>
             </div>
-            <div class="collapse navbar-collapse navbar-right" id="navbarEexample5">
-              <ul class="nav navbar-nav">
-                <li><%= link_to "トップ", homes_top_path %></li>
-                <li><%= link_to "アバウト", homes_about_path %></li>
-                <li><%= link_to "マイページ", customer_path %></li>
-                <!-- ログイン時はheaderにログアウト表示,ログアウト時はサインアップ表示 -->
-                <%  if customer_signed_in? %>
-                  <li><%= link_to "ログアウト", destroy_customer_session_path, method: :delete %></li>
-                <% else %>
-                  <li><%= link_to "新規登録", new_customer_registration_path %></li>
-                <% end %>
-                <!-- / -->
-                <li><%= link_to(cart_items_path) do %><i class="fas fa-shopping-cart"></i><% end %></li>
-              </ul>
-            </div>
+          </div>
+
+          <div class="header-nav flex">
+              <%= link_to(homes_top_path, class:"nav-link") do %><div class="header-nav-list-item">トップ</div><% end %>
+              <%= link_to(homes_about_path, class:"nav-link") do %><div class="header-nav-list-item">アバウト</div><% end %>
+              <!-- ログイン時はheaderにログアウト表示,ログアウト時はサインアップ表示 -->
+              <%  if customer_signed_in? %>
+                <%= link_to(customer_path, class:"nav-link") do %><div class="header-nav-list-item">マイページ</div><% end %>
+                <%= link_to(destroy_customer_session_path, method: :delete, class:"nav-link") do %><div class="header-nav-list-item">ログアウト</div><% end %>
+              <% else %>
+                <%= link_to(new_customer_registration_path, class:"nav-link") do %><div class="header-nav-list-item">新規登録</div><% end %>
+              <% end %>
+              <!-- / -->
+              <%= link_to(cart_items_path, class:"nav-link") do %><div class="header-nav-list-item"><i class="fas fa-shopping-cart"></i></div><% end %>
           </div>
         </div>
-        <form class="navbar-form navbar-right" role="search">
-          <div class="form-group">
-            <input type="text" class="form-control" placeholder="商品名で探す">
-          </div>
-          <button type="submit" class="btn btn-default search-btn">検索</button>
-          <!-- 検索ボタンにsearch-btn class追加 -->
-        </form>
-      </nav>
+      </div>
     </header>
     <!-- /header -->
 
@@ -63,21 +48,72 @@
 
     <!-- footer -->
     <footer>
-      <div class="container-fluid">
-        <div class="row">
-          <div class="footer-info-box col-xs-8">
-            <p><i class="fas fa-home"></i>  東京都××××××××××××</p>
-            <p><i class="fas fa-phone"></i>  000-0000-0000</p>
+      <div class="footer-info">
+        <div class="footer-headline"><h4>インフォメーション</h4></div>
+        <div class="fotter-icons">
+          <span><i class="fab fa-instagram"></i></span>
+          <span><i class="fab fa-twitter"></i></span>
+          <span><i class="fab fa-facebook-f"></i></span>
+        </div>
+        <div class="footer-info-contents flex">
+          <div class="footer-info-box">
+            <h5>お問い合わせ</h5>
             <p>
-              <i class="fab fa-instagram"></i>
-              <i class="fab fa-twitter"></i>
-              <i class="fab fa-facebook-f"></i>
+              ながのCAKE<br>
+              TEL　：000-0000-0000 <br>
+              MAIL ：000@00000000.com <br>
+              営業時間：午前10:00～午後18:00 <br>
+              ※年末年始、祝日は定休日となります。
             </p>
           </div>
-          <div class="footer-copywrite-box col-xs-2">
-            <p>©copyright</p>
+          <div class="footer-info-box">
+            <h5>アクセス</h5>
+            <p>
+              〒000-0000
+              東京都×××××××××××××
+              JR長野駅東口から徒歩10分
+            </p>
+          </div>
+          <div class="footer-info-box">
+            <h5>返品・交換について</h5>
+            <p>
+              原則として返品・交換は受け付けておりません。 「初期不良品」「注文以外の商品」などは、商品到着より3日以内にのみ返品・交換対応いたします。ただし、次の場合は返品・交換は受付けいたしかねますので、ご了承ください。 <br>
+              * 開封済みの商品<br>
+              * 購入者による汚損、破損された商品<br>
+              * 商品到着より４日以上経過した場合<br>
+              * 事前に返品・交換のご連絡がない場合
+            </p>
+          </div>
+          <div class="footer-info-box">
+            <h5>納期について</h5>
+            <p>
+              通常、入金確認後7営業日以内に発送致します。商品がすべてそろい次第発送させていただきますので、組み合わせによっては商品のお届け日が遅れる場合がございます。あらかじめご了承ください。
+            </p>
+          </div>
+          <div class="footer-info-box">
+            <h5>個人情報について</h5>
+            <p>
+              お客様からお預かりした大切な個人情報（住所・氏名・メールアドレスなど）を、裁判所や警察機関等、公共機関からの提出要請があった場合以外、公開または第三者に譲渡することは一切ございません。
+            </p>
+          </div>
+          <div class="footer-info-box">
+            <h5>お支払い方法について</h5>
+            <p>
+              お支払いは以下の方法がご利用いただけます。<br>
+              ・クレジットカード決済<br>
+              ・銀行振り込み<br>
+              <br>
+              下記のカード会社がご利用いただけます。<br>
+              <img src="card.png" alt="カード会社">
+            </p>
           </div>
         </div>
+      </div>
+      <div class="footer-visual">
+        <div class="footer-cover"></div>
+      </div>
+      <div class="footer-under-line">
+        <p class="text-center">©copyright ながのCAKE All Rights Reserved.</p>
       </div>
     </footer>
     <!-- fotter -->

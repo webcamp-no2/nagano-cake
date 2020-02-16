@@ -22,6 +22,80 @@
 @import "font-awesome-sprockets";
 @import "font-awesome";
 
+// header
+.header-line{
+	height: 25px;
+	background-color: #79c06e;
+}
+.header-name{
+	fon-size: 15px;
+	line-height: 25px;
+	margin: auto 20px;
+}
+
+.logo-container{
+	text-align: center;
+	padding-top: 15px;
+}
+
+.header-icon{
+	font-size: 50px;
+	-webkit-text-stroke: 0.1px #fff;
+}
+.nagano {
+	font-size: 50px;
+	font-family: "Kokoro";
+	letter-spacing: 2px;
+	font-weight: bold;
+}
+.cake{
+	font-size: 50px;
+	font-family: 'Kalam', cursive;
+	letter-spacing: 5px;
+}
+
+.header-vizual{
+	height: 110px;
+	background-image: url(header4.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+    background-position: 0px;
+}
+
+.header-customer-name{
+	height: 20px;
+	background-color: #79c06e;
+}
+
+header .flex{
+	display: flex;
+	justify-content: center;
+}
+
+.header-nav{
+	background-color: #fbdac8;
+
+}
+
+.nav-link{
+	text-decoration: none !important;
+}
+
+.header-nav-list-item{
+	text-align: center;
+	padding: 0.6em 2em;
+	color: black;
+	font-family: "Kokoro";
+	font-size: 20px;
+	cursor: pointer;
+	transition: all 0.3s ease 0s;
+}
+.header-nav-list-item:hover {
+	cursor: pointer;
+    transform: scale(1.1, 1.1);
+}
+
+// error_message
 .error_explanation{
 	color: red;
 	background-color: pink;
@@ -38,9 +112,77 @@
 }
 
 // footer
-footer{
+.footer-headline{
+	font-family: "Kokoro";
+	text-align: center;
+	font-size: 25px;
+    font-weight: bold;
+}
+
+.fotter-icons{
+	text-align: center;
+	font-size: 30px;
+	span{
+		margin: 10px;
+	}
+}
+
+
+.fa-instagram{
+	color: #e95464;
+}
+
+.fa-twitter{
+	color: #00afcc;
+}
+
+.fa-facebook-f{
+	color: #434da2;
+}
+
+footer .flex{
+	display: flex;
+	flex-wrap: wrap;
+	align-content: center;
+	justify-content: space-around;
+}
+
+.footer-info{
+	border-top: solid 2px #ccc;
+	width: 710px;
+	margin: 20px auto;
+}
+
+.footer-info-box{
+	width: 200px;
+	margin-bottom: 10px;
+	h5{
+		font-weight: bold;
+		padding-left: 5px;
+	}
+}
+
+footer h5{
+	border-left: solid 2px #fbdac8;
+}
+
+.footer-cover{
+	width: 100%;
+	height: 300px;
+	background: linear-gradient( 135deg, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0))
+	// background-color: rgba(255,255,255,0.5);
+}
+
+.footer-visual{
 	width: 100%;
 	height: 300px;
 	background-image: url(footer.jpg);
-	background-size: contain;
+	background-size: cover;
+}
+
+.footer-under-line{
+	width: 100%;
+	height: 40px;
+	line-height: 40px;
+	background-color: #79c06e;
 }
