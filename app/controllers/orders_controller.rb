@@ -30,6 +30,17 @@ class OrdersController < ApplicationController
   def create
      @order = current_customer.orders.build(set_order)
      if @order.save!
+        current_customer.cart_items.each do |cart_item|
+          # 注文商品テーブルにレコードを追加する
+          @order_products = OrderProduct.new(
+            product_id: cart_item.product.id,
+            count: cart_item.count,
+            ordered_price: cart_item.product.price_with_tax,
+            order_id: @order.id)
+
+          @order_products.save!
+        end
+        
         # オーダー確定後ユーザーのカートを削除する
         current_customer.cart_items.destroy_all
      end
