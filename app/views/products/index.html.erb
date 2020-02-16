@@ -7,8 +7,6 @@
       <% if @products.present? && @products.count > 0 %>
       <% if @product_genre.present? %>
       <h2><%= @product_genre.name %></h2>
-      <% else %>
-      <h2>すべての商品</h2>
       <% end %>
       <p><%="全#{@products.total_count}件中" + "(#{@products.count}件表示)" %></p>
       <% @products.each do |product| %>
