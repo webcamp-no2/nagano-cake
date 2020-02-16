@@ -1,3 +1,15 @@
+<% if @order.errors.any? %>
+<h4 class="errors-message">
+  項目が記入されてない箇所があります。
+</h4>
+<div id ="error_explanation" class="alert alert-danger">
+  <ul>
+    <% @order.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
 <div class="container">
   <div class="row">
     <div class="col-xs-12">

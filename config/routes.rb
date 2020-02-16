@@ -40,16 +40,15 @@ Rails.application.routes.draw do
   end
 
   resources :orders, except: [:edit, :destroy] do
-    member do
+    collection do
       get 'thanks'
+      post 'confirm'
     end
-    post 'confirm', on: :collection
   end
 
   delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
   resources :cart_items, except: [:new, :edit, :show]
   resources :products, only: [:index, :show]
   resources :deliveries, except: [:new, :show]
-  
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

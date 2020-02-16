@@ -31,4 +31,11 @@ class Order < ApplicationRecord
 		end
 		total + postage
 	end
+
+with_options presence: true do
+	validates :zip_code, length: {minimum: 2, maximum: 10}
+  validates :delivery_address, length: {minimum: 2, maximum: 50}
+  validates :delivery_name, length: {minimum: 1}
+end
+
 end
