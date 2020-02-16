@@ -1,0 +1,13 @@
+<table class="table table-bordered table-hover">
+  <tr>
+    <h4>ジャンル検索</h4>
+    <%= link_to "全商品を表示", products_path %>
+  </tr>
+  <% genres.each do |genre| %>
+  <tr>
+    <td>
+      <%= link_to genre.name, products_path(genre_id: genre.id) %>
+    </td>
+  </tr>
+  <% end %>
+</table>
