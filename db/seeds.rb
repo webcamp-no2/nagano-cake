@@ -39,7 +39,7 @@ profiles.each do |profile|
     address: "長崎県〇〇町1234-56",
     zip_code: Faker::Address.zip_code,
     tel: Faker::PhoneNumber.phone_number,
-    admittion_status: Faker::Boolean.boolean
+    admittion_status: rand(2) == 1 ? "withdraw" : "validity",
   )
 end
 # customer/
@@ -55,7 +55,7 @@ genre_names = [
 genre_names.each do |genre_name|
   Genre.create!(
     name: genre_name,
-    active_status: Faker::Boolean.boolean(true_ratio: 0.7)
+    active_status: rand(2) == 1 ? "無効" : "有効",
   )
 end
 # genre/
@@ -127,7 +127,7 @@ Order.all.each do |order|
       order_id: order.id,
       count: Faker::Number.within(range: 1..5),
       ordered_price: 0,
-      production_status: Faker::Number.within(range: 0..4)
+      production_status: Faker::Number.within(range: 0..3)
     )
   end
 end

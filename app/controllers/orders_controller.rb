@@ -6,6 +6,7 @@ class OrdersController < ApplicationController
   end
 
   def confirm
+    @order = Order.find(params[:id])
   end
 
   def create
@@ -15,5 +16,9 @@ class OrdersController < ApplicationController
   end
 
   def show
+    @order = Order.find(params[:id])
   end
 end
+
+# @order = Order.new(order_params)
+# render :new if @order.invalid?
