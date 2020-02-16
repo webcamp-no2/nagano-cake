@@ -1,18 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-2">
-      <table class="table table-bordered table-hover">
-        <tr>
-          <h4>ジャンル検索</h4>
-        </tr>
-        <% @genres.each do |genre| %>
-        <tr>
-          <td>
-            <%= link_to genre.name, products_path(genre_id: genre.id) %>
-          </td>
-        </tr>
-        <% end %>
-      </table>
+      <%= render partial: "products/genre_search", locals: {genres: @genres} %>
     </div>
     <div class="col-xs-9 col-xs-offset-1 product-card-content">
       <h4>新着商品</h4>
@@ -30,7 +19,7 @@
     </div>
     <div class="col-xs-9 col-xs-offset-1 product-card-content">
       <h4>ランキング</h4>
-      <% @products.each do |product| %>
+      <% @all_ranks.each do |product| %>
       <%= link_to product_path(product.id) do %>
       <div class="thumbnail product-thumbnail col-xs-2">
         <%= attachment_image_tag product, :image, :size => '100x100' %>

@@ -4,10 +4,9 @@ class CartItemsController < ApplicationController
   end
 
   def create
-    @product = Product.find(params[:product_id])
-    @cart_item = @product.cart_items.build(count: cart_item_params[:count],customer_id:current_customer.id)
+    @cart_item = current_customer.cart_items.new(cart_item_params)
     if @cart_item.save
-      redirect_to product_cart_items_path
+      redirect_to cart_items_path
     end
   end
 
@@ -37,7 +36,7 @@ class CartItemsController < ApplicationController
   private
 
   def cart_item_params
-    params.require(:cart_item).permit(:customer_id, :product_id, :count)
+    params.require(:cart_item).permit(:count,:product_id)
   end
 
 end

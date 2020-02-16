@@ -38,7 +38,7 @@
                 <li><%= link_to "マイページ", customer_path %></li>
                 <!-- ログイン時はheaderにログアウト表示,ログアウト時はサインアップ表示 -->
                 <%  if customer_signed_in? %>
-                  <li><%= link_to "ログアウト", destroy_customer_session_path, method: :delete %></li>
+                  <li><%= link_to "ログアウト", destroy_customer_session_path %></li>
                 <% else %>
                   <li><%= link_to "新規登録", new_customer_registration_path %></li>
                 <% end %>
@@ -63,12 +63,9 @@
 
     <!-- footer -->
     <footer>
-      <div class="container-fluid">
+      <div class="container-fluid footer">
         <div class="row">
-          <div class="footer-logo-box col-xs-2">
-            <%= image_tag 'cakes.png', :size =>'100x95' %>
-          </div>
-          <div class="footer-info-box col-xs-8">
+          <div class="footer-info-box col-xs-8 col-xs-offset-2">
             <p><i class="fas fa-home"></i>  東京都××××××××××××</p>
             <p><i class="fas fa-phone"></i>  000-0000-0000</p>
             <p>
