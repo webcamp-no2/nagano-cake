@@ -1,2 +1,54 @@
-<h1>CartItems#index</h1>
-<p>Find me in app/views/cart_items/index.html.erb</p>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-10 col-xs-offset-1">
+			<h2>ショッピングカート</h2>
+			<!-- success-massage -->
+			<% if flash[:notice] %>
+			  <p class="success-message"><%= flash[:notice] %></p>
+			<% end %>
+			<!-- / -->
+			<div class="btn-box text-right">
+				<%= link_to "カートを空にする", cart_items_destroy_all_path, method: :delete, class:"btn btn-danger" %>
+			</div>
+			<!-- カート商品一覧 -->
+			<div class="cart-item-table row">
+				<table class="table">
+					<thead>
+						<tr>
+							<th class="active">商品名</th>
+							<th class="active text-right">単価（税込）</th>
+							<th class="active text-right">数量</th>
+							<th class="active text-right">小計</th>
+							<th class="active"></th>
+						</tr>
+					</thead>
+					<tbody>
+						<% @customer.cart_items.each do |cart_item| %>
+						<tr>
+							<td><%= cart_item.product.name %></td>
+							<td class="text-right"><%= cart_item.product.price_with_tax %>円</td>
+							<td class="text-right"><%= cart_item.count %></td>
+							<td class="text-right"><%= cart_item.subtotal_price %>円</td>
+							<td class="text-right"><%= link_to "削除する", cart_item_path(cart_item.id), method: :delete, class:"btn btn-danger" %></td>
+						</tr>
+						<% end %>
+					</tbody>
+				</table>
+			</div>
+			<!-- 合計金額 -->
+			<div class="cart-total-table row">
+				<div class="col-xs-8 return-shopping-btn-wrapper"><%= link_to "買い物を続ける", homes_top_path, class:"btn btn-success" %></div>
+				<div class="col-xs-4">
+					<table class="table">
+						<tbody>
+							<th class="active">合計金額</th>
+							<td class="text-right"><%= @customer.cart_item_sum %>円</td><!-- cart_item_sumはcustomerモデルに定義あり -->
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<!-- ボタン群 -->
+				<div class="create-order-btn-wrapper col-xs-4 col-xs-offset-4"><%= link_to "情報入力に進む", new_order_path, class:"btn btn-primary form-control" %></div>
+		</div>
+	</div>
+</div>
