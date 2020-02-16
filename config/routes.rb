@@ -40,10 +40,10 @@ Rails.application.routes.draw do
   end
 
   resources :orders, except: [:edit, :destroy] do
-    member do
+    collection do
       get 'thanks'
+      post 'confirm'
     end
-    post 'confirm', on: :collection
   end
 
   delete 'cart_items/destroy_all' => 'cart_items#destroy_all'

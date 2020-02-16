@@ -20,7 +20,7 @@ class OrdersController < ApplicationController
       @order.delivery_name = Delivery.find(set_delivery[:id]).name
     when "新しいお届け先"
     end
-    @order.payment = @order.total_price
+    @order.payment = current_customer.cart_items.inject(0){|sum, cart_item| cart_item.subtotal_price + sum} + @order.postage
     unless @order.valid?
       @delivery = Delivery.new
       render :new
@@ -28,6 +28,12 @@ class OrdersController < ApplicationController
   end
 
   def create
+     @order = current_customer.orders.build(set_order)
+     if @order.save!
+        # オーダー確定後ユーザーのカートを削除する
+        current_customer.cart_items.destroy_all
+     end
+     redirect_to thanks_orders_path
   end
 
   def thanks
@@ -39,7 +45,7 @@ class OrdersController < ApplicationController
 
   private
   def set_order
-    params.require(:order).permit(:payment_method, :delivery_address, :zip_code, :delivery_name)
+    params.require(:order).permit(:payment, :payment_method, :delivery_address, :zip_code, :delivery_name)
   end
   def set_delivery
     params.require(:order).require(:delivery).permit(:id)
