@@ -8,20 +8,24 @@
         <% @genres.each do |genre| %>
         <tr>
           <td>
-            <%= link_to genre.name %>
+            <%= link_to genre.name, products_path(genre_id: genre.id) %>
           </td>
         </tr>
         <% end %>
       </table>
     </div>
-    <%= attachment_image_tag @product, :image, :size => '350x300' %>
-    <%= @product.name %>
-    <%= @product.description %>
-    <%= "¥#{@product.price}(税込)" %>
-    <%= form_for(@cart_item, url: cart_items_path, class: "form-control") do |f|  %>
-    <%= f.select :count,(1..10).to_a %>
-    <%= f.hidden_field :product_id, :value => @product.id %>
-    <%= f.submit 'カートに入れる', class: "btn btn-success btn-new-register btn-lg"%>
-    <% end %>
+    <div class="col-xs-5">
+      <%= attachment_image_tag @product, :image, :size => '350x300' %>
+    </div>
+    <div class="col-xs-5">
+      <h2><%= @product.name %></h2>
+      <p><%= @product.description %></p>
+      <p><%= "¥#{(@product.price * Constants::TAX).round}" %>(税込)</p>
+      <%= form_for(@cart_item, url: cart_items_path) do |f|  %>
+      <%= f.select :count,(1..10).to_a, {}, class: "form-control product-show-form-control" %>
+      <%= f.hidden_field :product_id, :value => @product.id %>
+      <%= f.submit 'カートに入れる', class: "btn btn-success btn-new-register btn-lg"%>
+      <% end %>
+    </div>
   </div>
 </div>
