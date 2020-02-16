@@ -4,5 +4,8 @@ class Delivery < ApplicationRecord
   def full_address
     zip_code + address
   end
-
+	# バリデーション
+	validates :zip_code, presence: true
+	validates :address, presence: true
+	validates :name, presence: true
 end
