@@ -21,6 +21,10 @@ class OrdersController < ApplicationController
     when "新しいお届け先"
     end
     @order.payment = @order.total_price
+    unless @order.valid?
+      @delivery = Delivery.new
+      render :new
+    end
   end
 
   def create
