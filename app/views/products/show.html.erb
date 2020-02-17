@@ -14,7 +14,7 @@
       <%= f.select :count,(1..10).to_a, {}, class: "form-control product-show-form-control" %>
       <%= f.hidden_field :product_id, :value => @product.id %>
       <% if @product.sales_status == false %>
-      <%= link_to '売り切れ', products_path, class: "btn btn-danger btn-new-register btn-lg"%>
+      <%= f.submit '売り切れ', class: "btn btn-new-register btn-lg", disabled: true %>
       <% else %>
       <%= f.submit 'カートに入れる', class: "btn btn-success btn-new-register btn-lg"%>
       <% end %>
