@@ -30,4 +30,13 @@ class Customer < ApplicationRecord
     end
     total
   end
+
+  def status_validity?
+    admittion_status == "validity"
+  end
+
+  # ログイン時に退会済会員はログインできないようにする
+  def active_for_authentication?
+    super && status_validity?
+  end
 end
