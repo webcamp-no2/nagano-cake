@@ -1,50 +1,86 @@
 <div class="container">
   <h2>会員登録画面</h2>
 
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "form-inline"}) do |f| %>
-    <%= render "devise/shared/error_messages", resource: resource %>
-    <table class="row table admin-customers-edit-table">
-      <tr>
-        <th class="col-xs-2"><%= f.label "氏名" %></th>
-        <td class="col-xs-10">
-          <%= f.text_field :last_name, class:"form-control", placeholder: :last_name %>
-          <%= f.text_field :first_name, class:"form-control", placeholder: :first_name %>
-        </td>
-      </tr>
-      <tr>
-        <th><%= f.label "フリガナ" %></th>
-        <td>
-          <%= f.text_field :kana_last_name, class:"form-control", placeholder: :kana_last_name %>
-          <%= f.text_field :kana_first_name, class:"form-control", placeholder: :kana_first_name %>
-        </td>
-      </tr>
-        <th><%= f.label "郵便番号" %></th>
-        <td><%= f.text_field :zip_code, class:"form-control", placeholder: :zip_code %></td>
-      </tr>
-      <tr>
-        <th><%= f.label "住所" %></th>
-        <td><%= f.text_field :address, class:"form-control", style:"width: 60%;", placeholder: :address %></td>
-      </tr>
-      <tr>
-        <th><%= f.label "電話番号" %></th>
-        <td><%= f.text_field :tel, class:"form-control", placeholder: :tel %></td>
-      </tr>
-      <tr>
-        <th><%= f.label "メールアドレス" %></th>
-        <td><%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control", placeholder: :email %></td>
-      </tr>
-      <tr>
-        <th><%= f.label "パスワード" %></th>
-        <td><%= f.password_field :password, autocomplete: "new-password", class:"form-control", placeholder: :password %></td>
-      </tr>
-      <tr>
-        <th><%= f.label "パスワード（確認）" %></th>
-        <td><%= f.password_field :password_confirmation, class:"form-control", autocomplete: "new-password", placeholder: :password_confirmation %></td>
-      </tr>
-    </table>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "form-horizontal customer-registration-form"}) do |f| %>
+    <%#= render "devise/shared/error_messages", resource: resource %>
 
-    <div class="row">
-      <%= f.submit "登録", class:"btn btn-primary" %>
+    <div class="form-group">
+      <%= f.label "氏名", class: "col-xs-2 control-label" %>
+      <div class="col-xs-6">
+        <div class="row">
+          <div class="col-xs-6">
+            <%= f.text_field :last_name, class:"form-control", placeholder: :last_name %>
+            <%= resource.errors.full_messages_for(:last_name).map{|error| "#" + error + " "}.join %>
+          </div>
+          <div class="col-xs-6">
+            <%= f.text_field :first_name, class:"form-control", placeholder: :first_name %>
+            <%= resource.errors.full_messages_for(:first_name).map{|error| "#" + error + " "}.join %>
+          </div>
+        </div>
+      </div>
     </div>
+
+    <div class="form-group">
+      <%= f.label "フリガナ", class: "col-xs-2 control-label" %>
+      <div class="col-xs-6">
+        <div class="row">
+          <div class="col-xs-6">
+            <%= f.text_field :kana_last_name, class:"form-control", placeholder: :kana_last_name %>
+          </div>
+          <div class="col-xs-6">
+            <%= f.text_field :kana_first_name, class:"form-control", placeholder: :kana_first_name %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label "郵便番号", class: "col-xs-2 control-label" %>
+      <div class="col-xs-6">
+        <%= f.text_field :zip_code, class:"form-control", placeholder: :zip_code %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label "住所", class: "col-xs-2 control-label" %>
+      <div class="col-xs-6">
+        <%= f.text_field :address, class:"form-control", placeholder: :address %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label "電話番号", class: "col-xs-2 control-label" %>
+      <div class="col-xs-6">
+        <%= f.text_field :tel, class:"form-control", placeholder: :tel %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label "メールアドレス", class: "col-xs-2 control-label" %>
+      <div class="col-xs-6">
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control", placeholder: :email %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label "パスワード", class: "col-xs-2 control-label" %>
+      <div class="col-xs-6">
+        <%= f.password_field :password, autocomplete: "new-password", class:"form-control", placeholder: :password %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label "パスワード（確認）", class: "col-xs-2 control-label" %>
+      <div class="col-xs-6">
+        <%= f.password_field :password_confirmation, class:"form-control", autocomplete: "new-password", placeholder: :password_confirmation %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-xs-offset-2 col-xs-10">
+        <%= f.submit "登録", class:"btn btn-primary" %>
+      </div>
+    </div>
+
   <% end %>
 </div>
