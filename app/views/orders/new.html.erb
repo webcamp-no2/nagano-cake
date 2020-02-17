@@ -1,2 +1,70 @@
-<h1>Orders#new</h1>
-<p>Find me in app/views/orders/new.html.erb</p>
+<% if @order.errors.any? %>
+<h4 class="errors-message">
+  項目が記入されてない箇所があります。
+</h4>
+<div id ="error_explanation" class="alert alert-danger">
+  <ul>
+    <% @order.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h2>購入情報入力</h2>
+      <%= form_for(@order, url: confirm_orders_path) do |f| %>
+      <h3>支払い方法</h3>
+      <tr>
+        <%= f.radio_button :payment_method, :"現金", checked: true %>
+        <%= f.label(:payment_method, "現金") %></p>
+      </tr>
+      <tr>
+        <%= f.radio_button :payment_method, :"カード" %>
+        <%= f.label(:payment_method, "クレジットカード") %>
+      ​</tr>
+      <h3>お届け先</h3>
+      <table class="address-form-table">
+        <tbody>
+          <tr>
+            <%= radio_button_tag :delivery_address_type, "ご自身の住所", checked: true %>
+            <%= f.label(:delivery_address, "ご自身の住所") %>
+            <p class="my-address"><%= "〒" + current_customer.zip_code + current_customer.address + current_customer.last_name + current_customer.first_name %></p>
+          </tr>
+          ​
+          <tr>
+            <%= radio_button_tag :delivery_address_type, "登録済住所から選択" %>
+            <%= f.label(:delivery_address, "登録済住所から選択") %>
+            <%= f.fields_for @delivery do |t| %>
+            <p class="registered-address"><%= t.select(:id, current_customer.deliveries.map { |deli| [deli.full_address, deli.id] }) %></p>
+            <% end %>
+          </tr>
+          ​
+          <tr>
+            <%= radio_button_tag :delivery_address_type, "新しいお届け先" %>
+            <%= f.label(:delivery_address, "新しいお届け先") %>
+          </tr>
+
+          <tr>
+            <td><%= f.label(:zip_code, "郵便番号") %></td>
+            <td><%= f.text_field :zip_code %>ハイフンなし</td>
+          </tr>
+          ​
+          <tr>
+            <td><%= f.label(:delivery_address, "住所") %></td>
+            <td><%= f.text_field :delivery_address, class: "form-control delivery-addresses-form" %></td>
+          </tr>
+          ​</div>
+
+          <tr>
+            <td><%= f.label(:delivery_name, "宛名") %></td>
+            <td><%= f.text_field :delivery_name %></td>
+          </tr>
+        </tbody>
+      </table>
+      <%= f.submit '確認画面へ進む', class: "btn btn-success new-order-btn center-block" %>
+      <% end %>
+    </div>
+  </div>
+</div>
