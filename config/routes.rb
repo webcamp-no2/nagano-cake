@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   root 'homes#top'
 
   devise_for :customers, controllers: {
@@ -38,19 +38,19 @@ Rails.application.routes.draw do
       patch 'withdraw'
     end
   end
-  
+
   resources :orders, except: [:edit, :destroy] do
-    member do
+    collection do
       get 'thanks'
-      get 'confirm'
+      post 'confirm'
     end
   end
+
   delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
   resources :cart_items, except: [:new, :edit, :show]
   resources :products, only: [:index, :show] do
     get 'search', on: :collection
   end
-  resources :delivery_addresses, except: [:new, :show]
-
+  resources :deliveries, except: [:new, :show]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

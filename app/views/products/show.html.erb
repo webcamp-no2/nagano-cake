@@ -1,26 +1,24 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-2">
-      <table class="table table-bordered table-hover">
-        <tr>
-          <h4>ジャンル検索</h4>
-        </tr>
-        <% @genres.each do |genre| %>
-        <tr>
-          <td>
-            <%= link_to genre.name %>
-          </td>
-        </tr>
-        <% end %>
-      </table>
+      <%= render partial: "genre_search", locals: {genres: @genres} %>
     </div>
-    <%= attachment_image_tag @product, :image, :size => '350x300' %>
-    <%= @product.name %>
-    <%= @product.description %>
-    <%= "¥#{@product.price}(税込)" %>
-    <%= form_for(@cart_item, url: cart_items_path(@product.id), class: "form-control") do |f|  %>
-    <%= f.select :count,(1..10).to_a %>
-    <%= f.submit 'カートに入れる', class: "btn btn-success btn-new-register btn-lg"%>
-    <% end %>
+    <div class="col-xs-5">
+      <%= attachment_image_tag @product, :image, :size => '350x300' %>
+    </div>
+    <div class="col-xs-5">
+      <h2><%= @product.name %></h2>
+      <p><%= @product.description %></p>
+      <p><%= "¥#{(@product.price * Constants::TAX).round}" %>(税込)</p>
+      <%= form_for(@cart_item, url: cart_items_path) do |f|  %>
+      <%= f.select :count,(1..10).to_a, {}, class: "form-control product-show-form-control" %>
+      <%= f.hidden_field :product_id, :value => @product.id %>
+      <% if @product.sales_status == false %>
+      <%= f.submit '売り切れ', class: "btn btn-new-register btn-lg", disabled: true %>
+      <% else %>
+      <%= f.submit 'カートに入れる', class: "btn btn-success btn-new-register btn-lg"%>
+      <% end %>
+      <% end %>
+    </div>
   </div>
 </div>
