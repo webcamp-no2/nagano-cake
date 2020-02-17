@@ -22,6 +22,12 @@
 @import "font-awesome-sprockets";
 @import "font-awesome";
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 // header
 .header-line{
 	height: 25px;
@@ -70,6 +76,7 @@
 header .flex{
 	display: flex;
 	justify-content: center;
+	margin-top: 0;
 }
 
 .header-nav{
@@ -93,6 +100,10 @@ header .flex{
 .header-nav-list-item:hover {
 	cursor: pointer;
     transform: scale(1.7, 1.7);
+}
+
+.serch-form{
+	margin-right: 15px;
 }
 
 // error_message
@@ -143,7 +154,9 @@ footer .flex{
 	display: flex;
 	flex-wrap: wrap;
 	align-content: center;
+	align-items: start;
 	justify-content: space-around;
+	margin-top: 0;
 }
 
 .footer-info{
@@ -184,4 +197,5 @@ footer h5{
 	height: 40px;
 	line-height: 40px;
 	background-color: #79c06e;
+	text-align: center;
 }

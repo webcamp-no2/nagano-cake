@@ -41,13 +41,15 @@
         </div>
       </div>
       <!-- 検索ボックス -->
-      <%= search_form_for @q, url: search_products_path, class: "form-inline navbar-form navbar-left" do |f| %>
-        <div class="form-group">
-          <%= f.label :name_or_description_cont, 'Title', class: 'control-label sr-only' %>
-          <%= f.search_field :name_or_description_cont,  autofocus: true, placeholder: "お菓子を探しましょう", class: 'form-control' %>
+      <div class="serch-form">
+        <%= search_form_for @q, url: search_products_path, class: "form-inline navbar-form navbar-right" do |f| %>
+          <div class="form-group">
+            <%= f.label :name_or_description_cont, 'Title', class: 'control-label sr-only' %>
+            <%= f.search_field :name_or_description_cont,  autofocus: true, placeholder: "お菓子を探しましょう", class: 'form-control' %>
+          </div>
+          <%= f.submit class: "btn btn-warning" %>
+        <% end %>
         </div>
-        <%= f.submit class: "btn btn-default" %>
-      <% end %>
     </header>
     <!-- /header -->
 
@@ -120,7 +122,7 @@
         <div class="footer-cover"></div>
       </div>
       <div class="footer-under-line">
-        <p class="text-center">©copyright ながのCAKE All Rights Reserved.</p>
+        <p>©copyright ながのCAKE All Rights Reserved.</p>
       </div>
     </footer>
     <!-- fotter -->
