@@ -6,7 +6,10 @@ class ProductsController < ApplicationController
 
       @product_genre = @products.first.genre if @products.count > 0
     else
-      @products = Product.page(params[:page]).per(18).reverse_order
+      # ジャンルが無効になっている商品は一覧に表示しない
+      @products = Product
+        .joins(:genre).where(genres: {active_status: "有効"})
+        .page(params[:page]).per(18).reverse_order
     end
     @genres = Genre.all
   end
