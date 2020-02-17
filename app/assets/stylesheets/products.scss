@@ -1,3 +1,24 @@
 // Place all the styles related to the products controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.product-card-content .product-thumbnail {
+  border: none;
+  text-align: center;
+}
+
+.text-center {
+  margin-top: 200px;
+}
+
+.product-price-area {
+  display: inline-block;
+}
+
+.product-show-form-control {
+  width: 20% !important;
+  margin-bottom: 30px;
+}
+
+.pagination {
+  text-align: center;
+}
