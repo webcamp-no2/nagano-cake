@@ -16,7 +16,7 @@ class ProductsController < ApplicationController
 
   def search
     # application controllerで生成した@qを利用して検索する
-    @q_products = @q.result.page(params[:page]).per(6).reverse_order
+    @q_products = @q.result.page(params[:page]).per(18).reverse_order
     @genres = Genre.all
 
     render :index
