@@ -10,15 +10,32 @@ class Customer < ApplicationRecord
   enum admittion_status: { withdraw: false, validity: true}
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  VALID_KATAKANA = /\A[\p{katakana}\p{blank}ー－]+\z/
+  VALID_ZIP_CODE = /\A\d{3}[-]\d{4}\z/  # 郵便番号（ハイフンあり7桁）
+  VALID_TEL = /\A\d{3}[-]\d{3}[-]\d{4}|\d{3}[-]\d{4}[-]\d{4}\z/  # 電話番号
   with_options presence: true do
     validates :last_name
     validates :first_name
-    validates :kana_last_name
-    validates :kana_first_name
-    validates :zip_code
+    validates :kana_last_name,  format: {
+                                  with: VALID_KATAKANA,
+                                  message: 'はカタカナで入力してください。'
+                                }
+    validates :kana_first_name, format: {
+                                  with: VALID_KATAKANA,
+                                  message: 'はカタカナで入力してください。'
+                                }
+    validates :zip_code,        format: {
+                                  with: VALID_ZIP_CODE,
+                                  message: "はハイフンあり7桁で入力してください。"
+                                }
     validates :address
-    validates :tel
-    validates :email, format: {with: VALID_EMAIL_REGEX}
+    validates :tel,             format: {
+                                  with: VALID_TEL,
+                                  message: "の入力が間違っています（ハイフンありの数字）"
+                                }
+    validates :email,           format: {
+                                  with: VALID_EMAIL_REGEX
+                                }
   end
 
   # カートアイテム合計
