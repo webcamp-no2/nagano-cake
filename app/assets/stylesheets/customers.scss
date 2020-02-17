@@ -7,6 +7,25 @@
   input[type="submit"] {
     width: 6em;
   }
+  .c_r_last_name_field,
+  .c_r_kana_last_name_field {
+    margin-right: -10px;
+  }
+  .c_r_first_name_field,
+  .c_r_kana_first_name_field {
+    margin-left: -10px;
+  }
+}
+
+.customer-registration-form-row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -5px;
+  margin-left: -5px;
+}
+
+.customer-registration-name-field {
+  padding-right: 5px !important;
 }
 // 会員登録画面/
 
