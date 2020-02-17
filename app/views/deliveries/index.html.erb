@@ -1,0 +1,82 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="delivery-index col-xs-10 col-xs-offset-1">
+			<h2>配送先一覧/登録</h2>
+			<!-- success-massage -->
+			<% if flash[:notice] %>
+			  <p class="success-message"><%= flash[:notice] %></p>
+			<% end %>
+			<!-- error-message -->
+			<% if @delivery.errors.any? %>
+			<div class="error_explanation genre-error">
+			  <h2><%= @delivery.errors.count %>件のエラーのため保存できませんでした。</h2>
+			  <ul>
+			  <% @delivery.errors.full_messages.each do |message| %>
+			    <li><%= message %></li>
+			  <% end %>
+			  </ul>
+		    </div>
+			<% end %>
+			<!-- 配送先新規登録 -->
+			<div class="create-delivery-section">
+			<%= form_for(@delivery) do |f| %>
+				<div class="create-delivery-table row">
+					<div class="col-xs-7">
+						<table class="table">
+							<tbody>
+								<tr class="row">
+									<th class="col-xs-3">郵便番号</th>
+									<td class="col-xs-9 row">
+										<div class="col-xs-4"><%= f.text_field :zip_code, class:"form-control" %></div>
+									</td>
+								</tr>
+								<tr class="row">
+									<th>住所</th>
+									<td>
+										<div class="col-xs-10"><%= f.text_field :address, class:"form-control" %></div>
+									</td>
+								</tr>
+								<tr class="row">
+									<th>宛名</th>
+									<td>
+										<div class="col-xs-5"><%= f.text_field :name, class:"form-control" %></div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div class="create-delivery-btn-wrap row">
+									<%= f.submit '登録する', class:"create-delivery-btn btn btn-primary" %>
+				</div>
+			<% end %>
+			</div>
+			<!-- 配送先一覧 -->
+			<div class="delivery-index-section row">
+				<table class="table">
+					<thead>
+						<tr>
+							<th>郵便番号</th>
+							<th>住所</th>
+							<th>宛名</th>
+							<th></th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+						<% current_customer.deliveries.each do |customer_delivery| %>
+						<tr>
+							<td><%= customer_delivery.zip_code %></td>
+							<td><%= customer_delivery.address %></td>
+							<td><%= customer_delivery.name %></td>
+							<td><%= link_to "編集する", edit_delivery_path(customer_delivery.id), class:"btn btn-success" %></td>
+							<td><%= link_to "削除する", delivery_path(customer_delivery.id), method: :delete, class:"btn btn-danger" %></td>
+						</tr>
+						<% end %>
+					</tbody>
+				</table>
+					<div class="return-mypage-btn-wrap"><%= link_to "マイページへ戻る", customer_path(current_customer.id), class:"btn btn-primary" %></div>
+			</div>
+		</div>
+	</div>
+</div>

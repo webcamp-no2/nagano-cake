@@ -4,28 +4,40 @@
       <%= render partial: "genre_search", locals: {genres: @genres} %>
     </div>
     <div class="col-xs-9 col-xs-offset-1 product-card-content">
-      <% if @products.present? && @products.count > 0 %>
-      <% if @product_genre.present? %>
-      <h2><%= @product_genre.name %></h2>
-      <% end %>
-      <p><%="全#{@products.total_count}件中" + "(#{@products.count}件表示)" %></p>
-      <% @products.each do |product| %>
-      <%= link_to product_path(product.id) do %>
-      <div class="thumbnail product-thumbnail col-xs-2">
-        <%= attachment_image_tag product, :image, :size => '300x300' %>
-        <div class="caption">
-          <p><%= product.name %></p>
-          <p><%= "¥#{product.price}" %></p>
+      <% if @products.present?%>
+        <%# 商品一覧の場合（一覧、ジャンル検索）%>
+        <% if @products.count > 0 %>
+          <% if @product_genre.present? %>
+            <h2><%= @product_genre.name %></h2>
+          <% end %>
+          <p><%="全#{@products.total_count}件中" + "(#{@products.count}件表示)" %></p>
+          <%= render 'product_list', products: @products %>
+        <% else %>
+          <h2>商品の取り扱いがありません</h2>
+        <% end %>
+      <% elsif @q_products %>
+        <%# 検索の場合 %>
+        <div class="col-xs-9 col-xs-offset-1 product-card-content">
+          <% if @q_products.empty? %>
+            <h3>条件に合う商品が見つかりませんでした</h3>
+          <% else %>
+            <p><%="#{@q_products.total_count}件の商品がヒットしました" %></p>
+          <% end %>
+
+          <%= render 'product_list', products: @q_products %>
+
+          <div class="row text-center">
+            <%= paginate @q_products, class: "paginate" %>
+          </div>
         </div>
-      </div>
-      <% end %>
-      <% end %>
       <% else %>
-      <h2>商品の取り扱いがありません</h2>
+        
       <% end %>
     </div>
     <div class= "text-center" >
-      <%= paginate @products %>
+      <% if @products%>
+        <%= paginate @products %>
+      <% end %>
     </div>
   </div>
 </div>

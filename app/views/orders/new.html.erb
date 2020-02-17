@@ -1,3 +1,15 @@
+<% if @order.errors.any? %>
+<h4 class="errors-message">
+  項目が記入されてない箇所があります。
+</h4>
+<div id ="error_explanation" class="alert alert-danger">
+  <ul>
+    <% @order.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
 <div class="container">
   <div class="row">
     <div class="col-xs-12">
@@ -13,7 +25,7 @@
         <%= f.label(:payment_method, "クレジットカード") %>
       ​</tr>
       <h3>お届け先</h3>
-      <table>
+      <table class="address-form-table">
         <tbody>
           <tr>
             <%= radio_button_tag :delivery_address_type, "ご自身の住所", checked: true %>
@@ -43,7 +55,8 @@
             <td><%= f.label(:delivery_address, "住所") %></td>
             <td><%= f.text_field :delivery_address, class: "form-control delivery-addresses-form" %></td>
           </tr>
-          ​
+          ​</div>
+
           <tr>
             <td><%= f.label(:delivery_name, "宛名") %></td>
             <td><%= f.text_field :delivery_name %></td>
