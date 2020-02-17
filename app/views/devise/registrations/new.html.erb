@@ -1,9 +1,7 @@
 <div class="container">
   <h2>会員登録画面</h2>
 
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "form-horizontal customer-registration-form"}) do |f| %>
-    <%#= render "devise/shared/error_messages", resource: resource %>
-
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "form-horizontal customer-registration-form", novalidate: "novalidate" }) do |f| %>
     <div class="form-group">
       <%= f.label "氏名", class: "col-xs-2 control-label" %>
       <div class="col-xs-6">
