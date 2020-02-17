@@ -4,6 +4,10 @@ class CartItemsController < ApplicationController
   end
 
   def create
+    @cart_item = current_customer.cart_items.new(cart_item_params)
+    if @cart_item.save
+      redirect_to cart_items_path
+    end
   end
 
   def update
@@ -28,4 +32,11 @@ class CartItemsController < ApplicationController
       render action: :index
     end
   end
+
+  private
+
+  def cart_item_params
+    params.require(:cart_item).permit(:count,:product_id)
+  end
+
 end

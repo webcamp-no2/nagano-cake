@@ -1,2 +1,37 @@
-<h1>Homes#top</h1>
-<p>Find me in app/views/homes/top.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-2">
+      <%= render partial: "products/genre_search", locals: {genres: @genres} %>
+    </div>
+    <div class="col-xs-10">
+      <div class="row product-card-content">
+        <h4>新着商品</h4>
+        <% @products.each do |product| %>
+        <%= link_to product_path(product.id) do %>
+        <div class="thumbnail product-thumbnail col-xs-2">
+          <%= attachment_image_tag product, :image, :size => '100x100' %>
+          <div class="caption">
+            <p><%= product.name %></p>
+            <p><%= "#{product.price}円" %></p>
+          </div>
+        </div>
+        <% end %>
+        <% end %>
+      </div>
+      <div class="row product-card-content">
+        <h4>ランキング</h4>
+        <% @all_ranks.each do |product| %>
+        <%= link_to product_path(product.id) do %>
+        <div class="thumbnail product-thumbnail col-xs-2">
+          <%= attachment_image_tag product, :image, :size => '100x100' %>
+          <div class="caption">
+            <p><%= product.name %></p>
+            <p><%= "#{product.price}円" %></p>
+          </div>
+        </div>
+        <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
