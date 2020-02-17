@@ -24,9 +24,8 @@
 								<%= order.delivery_name %>
 							</td>
 							<td>
-								<% order.order_products.each do |order_product| %>
-									<%= order_product.product.name %><br>
-								<% end %>
+								<%= order.order_products.map{|order_product| order_product.product.name}.join('<br>').html_safe %>
+
 							</td>
 							<td><%= order.payment %>円</td>
 							<td><%= order.status %></td>
