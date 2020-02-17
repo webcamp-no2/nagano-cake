@@ -33,7 +33,7 @@ class Order < ApplicationRecord
 	end
 
 with_options presence: true do
-	validates :zip_code, length: {minimum: 2, maximum: 10}
+	validates :zip_code, length: {is: 7}, numericality: true
   validates :delivery_address, length: {minimum: 2, maximum: 50}
   validates :delivery_name, length: {minimum: 1}
 end
