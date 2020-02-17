@@ -38,7 +38,7 @@ profiles.each do |profile|
     email: profile[:email],
     address: "長崎県〇〇町1234-56",
     zip_code: Faker::Address.zip_code,
-    tel: Faker::PhoneNumber.phone_number,
+    tel: Faker::PhoneNumber.cell_phone,
     admittion_status: rand(2) == 1 ? "withdraw" : "validity",
   )
 end
@@ -61,11 +61,12 @@ end
 # genre/
 
 # product
-3.times do |num|
+image = "/vagrant/nagano-cake/app/assets/images/anv_short_fruits.jpg"
+20.times do |num|
   Product.create!(
     genre_id: Genre.all.sample.id,
     name: Faker::Dessert.variety,
-    image_id: 'default', # not nullのため入れている。画像表示する時falloutの状態にしたいが、エラーになるかも
+    image_id: File.open(image),
     description: Faker::Food.description,
     price: Faker::Number.between(from: 100, to: 1000),
     sales_status: Faker::Boolean.boolean(true_ratio: 0.7)
