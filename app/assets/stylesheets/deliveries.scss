@@ -1,0 +1,23 @@
+// Place all the styles related to the deliveries controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.create-delivery-section,
+.create-delivery-btn-wrap,
+.delivery-index-section,
+.return-mypage-btn-wrap{
+	margin-top: 50px;
+}
+
+.create-delivery-btn-wrap,
+.return-mypage-btn-wrap{
+	padding-left: 50px;
+}
+
+.edit-delivery-table{
+	margin-top: 30px;
+}
+
+.update-delivery-btn-wrap{
+	padding-left: 50px;
+}
