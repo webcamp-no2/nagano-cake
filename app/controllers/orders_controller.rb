@@ -40,7 +40,6 @@ class OrdersController < ApplicationController
 
           @order_products.save!
         end
-        
         # オーダー確定後ユーザーのカートを削除する
         current_customer.cart_items.destroy_all
      end
