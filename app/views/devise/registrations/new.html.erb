@@ -10,11 +10,11 @@
         <div class="row">
           <div class="col-xs-6 c_r_last_name_field">
             <%= f.text_field :last_name, class:"form-control", placeholder: :last_name %>
-            <%= resource.errors.full_messages_for(:last_name).map{|error| "#" + error + " "}.join %>
+            <%= render partial: "common/error_message", locals: {resource: resource, attr: :last_name} %>
           </div>
           <div class="col-xs-6 c_r_first_name_field">
             <%= f.text_field :first_name, class:"form-control", placeholder: :first_name %>
-            <%= resource.errors.full_messages_for(:first_name).map{|error| "#" + error + " "}.join %>
+            <%= render partial: "common/error_message", locals: {resource: resource, attr: :first_name} %>
           </div>
         </div>
       </div>
@@ -26,9 +26,11 @@
         <div class="row">
           <div class="col-xs-6 c_r_kana_last_name_field">
             <%= f.text_field :kana_last_name, class:"form-control", placeholder: :kana_last_name %>
+            <%= render partial: "common/error_message", locals: {resource: resource, attr: :kana_last_name} %>
           </div>
           <div class="col-xs-6 c_r_kana_first_name_field"">
             <%= f.text_field :kana_first_name, class:"form-control", placeholder: :kana_first_name %>
+            <%= render partial: "common/error_message", locals: {resource: resource, attr: :kana_first_name} %>
           </div>
         </div>
       </div>
@@ -38,6 +40,7 @@
       <%= f.label "郵便番号", class: "col-xs-2 control-label" %>
       <div class="col-xs-3">
         <%= f.text_field :zip_code, class:"form-control", placeholder: :zip_code %>
+        <%= render partial: "common/error_message", locals: {resource: resource, attr: :zip_code} %>
       </div>
     </div>
 
@@ -45,6 +48,7 @@
       <%= f.label "住所", class: "col-xs-2 control-label" %>
       <div class="col-xs-6">
         <%= f.text_field :address, class:"form-control", placeholder: :address %>
+        <%= render partial: "common/error_message", locals: {resource: resource, attr: :address} %>
       </div>
     </div>
 
@@ -52,6 +56,7 @@
       <%= f.label "電話番号", class: "col-xs-2 control-label" %>
       <div class="col-xs-3">
         <%= f.text_field :tel, class:"form-control", placeholder: :tel %>
+        <%= render partial: "common/error_message", locals: {resource: resource, attr: :tel} %>
       </div>
     </div>
 
@@ -59,6 +64,7 @@
       <%= f.label "メールアドレス", class: "col-xs-2 control-label" %>
       <div class="col-xs-3">
         <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control", placeholder: :email %>
+        <%= render partial: "common/error_message", locals: {resource: resource, attr: :email} %>
       </div>
     </div>
 
@@ -66,6 +72,7 @@
       <%= f.label "パスワード", class: "col-xs-2 control-label" %>
       <div class="col-xs-3">
         <%= f.password_field :password, autocomplete: "new-password", class:"form-control", placeholder: :password %>
+        <%= render partial: "common/error_message", locals: {resource: resource, attr: :password} %>
       </div>
     </div>
 
@@ -73,6 +80,7 @@
       <%= f.label "パスワード（確認）", class: "col-xs-2 control-label" %>
       <div class="col-xs-3">
         <%= f.password_field :password_confirmation, class:"form-control", autocomplete: "new-password", placeholder: :password_confirmation %>
+        <%= render partial: "common/error_message", locals: {resource: resource, attr: :password_confirmation} %>
       </div>
     </div>
 

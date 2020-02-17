@@ -25,6 +25,8 @@ ja:
         password: "パスワード"
         password_confirmation: "確認用パスワード"
         remember_me: "次回から自動的にログイン"
+        last_name: "氏名（姓）"
+        first_name: "氏名（名）"
     models:
       customer: "ユーザ"
   devise:
