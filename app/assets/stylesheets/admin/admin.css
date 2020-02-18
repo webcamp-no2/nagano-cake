@@ -1,14 +1,37 @@
-header .navbar {
-  border-bottom: 1px solid #898989;
+/*header*/
+.container-fluid{
+	margin: 0 !important;
+	padding: 0 !important;
 }
-/*ログインadmin.nameの表示サイズ*/
-header .navbar-brand {
-  font-size: 15px;
+.admin-name{
+	margin: 0;
+	background-color: #79c06e;
 }
-/*検索欄の右側に設定*/
-.search-btn {
-  margin-right: 45px;
+.logo-container{
+	text-align: none;
+	padding-top: 0;
 }
+.header-icon{
+	font-size: 50px;
+	-webkit-text-stroke: 0.1px #fff;
+}
+.nagano {
+	font-size: 50px;
+	font-family: "Kokoro";
+	letter-spacing: 2px;
+	font-weight: bold;
+}
+.cake{
+	font-size: 50px;
+	font-family: 'Kalam', cursive;
+	letter-spacing: 5px;
+}
+
+header{
+	background-color: #f5f5f5;
+}
+/*body*/
+
 /*エラーメッセージ*/
 .errors-message {
   color: red;
@@ -21,4 +44,9 @@ header .navbar-brand {
 /*サクセスメッセージ*/
 #notice {
   color: green;
+}
+
+/*rogin画面*/
+.form-horizontal {
+  margin-top: 100px;
 }

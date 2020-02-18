@@ -2,6 +2,8 @@
 <html>
 <head>
   <title>ながのCAKE - 管理ページ</title>
+  <link href="https://fonts.googleapis.com/earlyaccess/kokoro.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Kalam&display=swap" rel="stylesheet">
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -9,43 +11,31 @@
 </head>
 <body>
   <header>
-    <nav class="navbar">
       <div class="container-fluid">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarEexample5">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <p class="navbar-brand">
-            <%= image_tag 'cakes.png', :size =>'100x95' %>
-          </p>
+        <div class="admin-name">
+        <!-- ログイン時に名前表示 -->
           <% if admin_signed_in? %>
-            <p class="navbar-brand"><%= current_admin.name %></p>
+            <p class="text-right"><%= current_admin.name %></p>
           <% end %>
         </div>
-        <div class="collapse navbar-collapse navbar-right" id="navbarEexample5">
-          <ul class="nav navbar-nav">
-            <li><%= link_to "商品一覧", admin_products_path %></li>
-            <li><%= link_to "会員一覧", admin_customers_path %></li>
-            <li><%= link_to "注文履歴一覧", admin_orders_path %></li>
-            <li><%= link_to "ジャンル一覧", admin_genres_path %></li>
-            <!-- ログイン時はheaderにログアウト表示 -->
-            <%  if admin_signed_in? %>
-              <li><%= link_to "ログアウト", destroy_admin_session_path %></li>
-            <% end %>
-          </ul>
+        <div class="logo-container">
+          <i class="fas fa-cheese header-icon"></i>
+          <span class="nagano">ながの</span><span class="cake">CAKE</span><span>―管理者ページ―</span>
         </div>
-      </div>
-      <form class="navbar-form navbar-right" role="search">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="検索キーワード">
+        <div class="menu">
+          <div class="navbar-right">
+            <ul class="nav navbar-nav">
+              <li><%= link_to "商品一覧", admin_products_path %></li>
+              <li><%= link_to "会員一覧", admin_customers_path %></li>
+              <li><%= link_to "注文履歴一覧", admin_orders_path %></li>
+              <li><%= link_to "ジャンル一覧", admin_genres_path %></li>
+              <!-- ログイン時はheaderにログアウト表示 -->
+              <%  if admin_signed_in? %>
+                <li><%= link_to "ログアウト", destroy_admin_session_path %></li>
+              <% end %>
+            </ul>
+          </div>
         </div>
-        <button type="submit" class="btn btn-default search-btn">検索</button>
-        <!-- 検索ボタンにsearch-btn class追加 -->
-      </form>
-    </nav>
   </header>
   <!-- /header -->
   <%= yield %>
