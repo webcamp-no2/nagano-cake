@@ -1,0 +1,82 @@
+
+<div class="form-group">
+  <%= f.label "氏名", class: "col-xs-2 control-label" %>
+  <div class="col-xs-6">
+    <div class="row">
+      <div class="col-xs-6 c_r_last_name_field">
+        <%= f.text_field :last_name, class:"form-control", placeholder: "長野" %>
+        <%= render partial: "common/error_message", locals: {resource: resource, attr: :last_name} %>
+      </div>
+      <div class="col-xs-6 c_r_first_name_field">
+        <%= f.text_field :first_name, class:"form-control", placeholder: "景樹" %>
+        <%= render partial: "common/error_message", locals: {resource: resource, attr: :first_name} %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="form-group">
+  <%= f.label "フリガナ", class: "col-xs-2 control-label" %>
+  <div class="col-xs-6">
+    <div class="row">
+      <div class="col-xs-6 c_r_kana_last_name_field">
+        <%= f.text_field :kana_last_name, class:"form-control", placeholder: "ナガノ" %>
+        <%= render partial: "common/error_message", locals: {resource: resource, attr: :kana_last_name} %>
+      </div>
+      <div class="col-xs-6 c_r_kana_first_name_field">
+        <%= f.text_field :kana_first_name, class:"form-control", placeholder: "ケイキ" %>
+        <%= render partial: "common/error_message", locals: {resource: resource, attr: :kana_first_name} %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="form-group">
+  <%= f.label "郵便番号", class: "col-xs-2 control-label" %>
+  <div class="col-xs-3">
+    <%= f.text_field :zip_code, class:"form-control", placeholder: "750-3939" %>
+    <%= render partial: "common/error_message", locals: {resource: resource, attr: :zip_code} %>
+  </div>
+</div>
+
+<div class="form-group">
+  <%= f.label "住所", class: "col-xs-2 control-label" %>
+  <div class="col-xs-6">
+    <%= f.text_field :address, class:"form-control", placeholder: "東京都六本木一丁目コーポ山下603" %>
+    <%= render partial: "common/error_message", locals: {resource: resource, attr: :address} %>
+  </div>
+</div>
+
+<div class="form-group">
+  <%= f.label "電話番号", class: "col-xs-2 control-label" %>
+  <div class="col-xs-3">
+    <%= f.text_field :tel, class:"form-control", placeholder: "090-750-4649" %>
+    <%= render partial: "common/error_message", locals: {resource: resource, attr: :tel } %>
+  </div>
+</div>
+
+<div class="form-group">
+  <%= f.label "メールアドレス", class: "col-xs-2 control-label" %>
+  <div class="col-xs-3">
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control", placeholder: "nagano@example.co.jp" %>
+    <%= render partial: "common/error_message", locals: {resource: resource, attr: :email} %>
+  </div>
+</div>
+
+<div class="form-group">
+  <%= f.label "パスワード", class: "col-xs-2 control-label" %>
+  <div class="col-xs-3">
+    <%= f.password_field :password, autocomplete: "new-password", class:"form-control", placeholder: "パスワード（6文字以上）" %>
+    <%= render partial: "common/error_message", locals: {resource: resource, attr: :password} %>
+  </div>
+</div>
+
+<div class="form-group">
+  <%= f.label "パスワード（確認）", class: "col-xs-2 control-label" %>
+  <div class="col-xs-3">
+    <%= f.password_field :password_confirmation, class:"form-control", autocomplete: "new-password", placeholder:  "パスワードの確認" %>
+    <%= render partial: "common/error_message", locals: {resource: resource, attr: :password_confirmation} %>
+  </div>
+</div>
+
+    
