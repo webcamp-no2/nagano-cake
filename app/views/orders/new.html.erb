@@ -2,13 +2,6 @@
 <h4 class="errors-message">
   項目が記入されてない箇所があります。
 </h4>
-<div id ="error_explanation" class="alert alert-danger">
-  <ul>
-    <% @order.errors.full_messages.each do |message| %>
-    <li><%= message %></li>
-    <% end %>
-  </ul>
-</div>
 <% end %>
 <div class="container">
   <div class="row">
@@ -48,18 +41,27 @@
 
           <tr>
             <td><%= f.label(:zip_code, "郵便番号") %></td>
-            <td><%= f.text_field :zip_code %>ハイフンなし</td>
+            <td>
+              <%= f.text_field :zip_code, class: "form-control", placeholder: "7503939" %>ハイフンなし<br>
+              <%= render partial: "common/error_message", locals: {resource: @order, attr: :zip_code} %>
+            </td>
           </tr>
           ​
           <tr>
             <td><%= f.label(:delivery_address, "住所") %></td>
-            <td><%= f.text_field :delivery_address, class: "form-control delivery-addresses-form" %></td>
+            <td>
+              <%= f.text_field :delivery_address, class: "form-control delivery-addresses-form", placeholder: "東京都六本木一丁目コーポ山下603" %>
+              <%= render partial: "common/error_message", locals: {resource: @order, attr: :delivery_address} %>
+            </td>
           </tr>
           ​</div>
 
           <tr>
             <td><%= f.label(:delivery_name, "宛名") %></td>
-            <td><%= f.text_field :delivery_name %></td>
+            <td>
+              <%= f.text_field :delivery_name, placeholder: "長野 景樹", class: "form-control" %>
+              <%= render partial: "common/error_message", locals: {resource: @order, attr: :delivery_name} %>
+            </td>
           </tr>
         </tbody>
       </table>

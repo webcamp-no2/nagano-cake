@@ -22,11 +22,23 @@
 @import "font-awesome-sprockets";
 @import "font-awesome";
 
+// common
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
+.error_message {
+	color: rgb(233, 81, 43);
+}
+
+.field_with_errors input {
+	border-color: rgb(233, 81, 43);
+}
+
+// common/
 
 // header
 .header-line{
@@ -34,7 +46,7 @@
 	background-color: #79c06e;
 }
 .header-name{
-	fon-size: 15px;
+	font-size: 15px;
 	line-height: 25px;
 	margin: auto 20px;
 }
