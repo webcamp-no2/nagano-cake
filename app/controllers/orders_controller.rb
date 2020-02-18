@@ -43,13 +43,14 @@ class OrdersController < ApplicationController
           count: cart_item.count,
           ordered_price: cart_item.product.price_with_tax,
           order_id: @order.id)
-
-        @order_products.save!
-      end
-      # オーダー確定後ユーザーのカートを削除する
-      current_customer.cart_items.destroy_all
-    end
-    redirect_to thanks_orders_path
+        
+          @order_products.save!
+        end
+        Delivery.create!(customer_id: current_customer.id, zip_code: @order.zip_code, address: @order.delivery_address, name: @order.delivery_name)
+        # オーダー確定後ユーザーのカートを削除する
+        current_customer.cart_items.destroy_all
+     end
+     redirect_to thanks_orders_path
   end
 
   def thanks

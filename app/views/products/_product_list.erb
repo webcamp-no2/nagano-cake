@@ -5,6 +5,9 @@
       <div class="caption">
         <p><%= product.name %></p>
         <p><%= "¥#{product.price}" %></p>
+        <% if product.sales_status == false %>
+        <p class="product-sales-status">売り切れ</p>
+        <% end %>
       </div>
     </div>
   <% end %>
