@@ -6,17 +6,6 @@
 			<% if flash[:notice] %>
 			  <p class="success-message"><%= flash[:notice] %></p>
 			<% end %>
-			<!-- error-message -->
-			<% if @delivery.errors.any? %>
-			<div class="error_explanation genre-error">
-			  <h2><%= @delivery.errors.count %>件のエラーのため保存できませんでした。</h2>
-			  <ul>
-			  <% @delivery.errors.full_messages.each do |message| %>
-			    <li><%= message %></li>
-			  <% end %>
-			  </ul>
-		    </div>
-			<% end %>
 			<!-- 配送先新規登録 -->
 			<div class="create-delivery-section">
 			<%= form_for(@delivery) do |f| %>
@@ -27,19 +16,28 @@
 								<tr class="row">
 									<th class="col-xs-3">郵便番号</th>
 									<td class="col-xs-9 row">
-										<div class="col-xs-4"><%= f.text_field :zip_code, class:"form-control" %></div>
+										<div class="col-xs-4">
+											<%= f.text_field :zip_code, class:"form-control", placeholder: "7503939" %>
+											<%= render partial: "common/error_message", locals: {resource: @delivery, attr: :zip_code} %>
+										</div>
 									</td>
 								</tr>
 								<tr class="row">
 									<th>住所</th>
 									<td>
-										<div class="col-xs-10"><%= f.text_field :address, class:"form-control" %></div>
+										<div class="col-xs-10">
+											<%= f.text_field :address, class:"form-control", placeholder: "東京都六本木一丁目コーポ山下603" %>
+											<%= render partial: "common/error_message", locals: {resource: @delivery, attr: :address} %>
+										</div>
 									</td>
 								</tr>
 								<tr class="row">
 									<th>宛名</th>
 									<td>
-										<div class="col-xs-5"><%= f.text_field :name, class:"form-control" %></div>
+										<div class="col-xs-5">
+											<%= f.text_field :name, class:"form-control", placeholder: "長野 景樹" %>
+											<%= render partial: "common/error_message", locals: {resource: @delivery, attr: :name} %>
+										</div>
 									</td>
 								</tr>
 							</tbody>

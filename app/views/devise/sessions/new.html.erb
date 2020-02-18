@@ -4,6 +4,14 @@
       <div class="customer-session-box">
         <h3>会員の方はこちらからログイン</h3>
           <%= form_for(resource, as: resource_name, url: session_path(resource_name), html:{class:"form-horizontal"}) do |f| %>
+            <div class="row">
+              <div class="col-xs-9 col-xs-offset-3">
+                <%# エラーメッセージ(login時はなぜかflashに入ってくるみたい) %>
+                <%- flash.each do |name, msg| -%>
+                  <%= content_tag :p, msg, id: "flash_#{name}", class:"error_message" if msg.is_a?(String) %>
+                <%- end -%>
+              </div>
+            </div>
             <div class="form-group">
               <%= f.label :email, "メールアドレス", class:"col-xs-2 col-xs-offset-1 control-label" %>
               <div class="col-xs-9 "><%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %></div>

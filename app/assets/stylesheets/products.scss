@@ -6,10 +6,6 @@
   text-align: center;
 }
 
-.text-center {
-  margin-top: 200px;
-}
-
 .product-price-area {
   display: inline-block;
 }
@@ -19,6 +15,10 @@
   margin-bottom: 30px;
 }
 
-.pagination {
-  text-align: center;
+.product-sales-status {
+  color: red;
+}
+
+.caption {
+  height: 120px;
 }

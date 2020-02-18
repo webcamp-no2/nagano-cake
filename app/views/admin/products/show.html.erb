@@ -25,6 +25,7 @@
     </tbody>
   </table>
   <div>
-    <%= link_to "編集", edit_admin_product_path(@product.id), class: "btn btn-success btn-new-register btn-lg"; %>
+    <%= link_to "編集", edit_admin_product_path(@product.id), class: "btn btn-success btn-new-register btn-lg" %>
+    <%= link_to "続けて登録", new_admin_product_path, class: "btn btn-success btn-new-register btn-lg"  %>
   </div>
 </div>
