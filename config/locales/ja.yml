@@ -9,15 +9,9 @@ ja:
           has_many: "%{record}が存在しているので削除できません"
     models:
       customer: 会員
+      order: 注文
     attributes:
-      task:
-        id: ID
-        last_name: 姓
-        tel: 電話番号
-        address: 住所
-        created_at: 登録日時
-        updated_at: 更新日時
-      user:
+      customer:
         name: 名前
         email: メールアドレス
         admin: 管理者権限
@@ -25,6 +19,10 @@ ja:
         passwor_confirmation: パスワード（確認）
         created_at: 登録日時
         updated_at: 更新日時
+      order:
+        zip_code: 郵便番号
+        delivery_address: 配送先住所
+        delivery_name: 宛名
   date:
     abbr_day_names:
     - 日
