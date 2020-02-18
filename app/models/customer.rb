@@ -51,6 +51,15 @@ class Customer < ApplicationRecord
     admittion_status == "validity"
   end
 
+  # カート商品合計個数
+  def cart_total_count
+    count = 0
+    cart_items.each do |cart_item|
+      count += cart_item.count
+    end
+    count
+  end
+
   # ログイン時に退会済会員はログインできないようにする
   def active_for_authentication?
     super && status_validity?

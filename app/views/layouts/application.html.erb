@@ -32,11 +32,21 @@
               <%  if customer_signed_in? %>
                 <%= link_to(customer_path, class:"nav-link") do %><div class="header-nav-list-item">マイページ</div><% end %>
                 <%= link_to(destroy_customer_session_path, class:"nav-link") do %><div class="header-nav-list-item">ログアウト</div><% end %>
+                <%= link_to(cart_items_path, class:"nav-link") do %>
+                  <div class="header-nav-list-item">
+                    <i class="fas fa-shopping-cart"></i>
+                    <% if current_customer.cart_total_count >= 1 %>
+                    <span class="label label-danger">
+                      <%= current_customer.cart_total_count %>
+                    </span>
+                    <% end %>
+                  </div>
+                <% end %>
               <% else %>
-                <%= link_to(new_customer_registration_path, class:"nav-link") do %><div class="header-nav-list-item">新規登録</div><% end %>
+                <%= link_to(new_customer_registration_path, class:"nav-link") do %><div class="header-nav-list-item">サインアップ</div><% end %>
+                <%= link_to(new_customer_session_path, class:"nav-link") do %><div class="header-nav-list-item">ログイン</div><% end %>
               <% end %>
               <!-- / -->
-              <%= link_to(cart_items_path, class:"nav-link") do %><div class="header-nav-list-item"><i class="fas fa-shopping-cart"></i></div><% end %>
           </div>
         </div>
       </div>
