@@ -32,10 +32,14 @@ class Order < ApplicationRecord
 		total + postage
 	end
 
-with_options presence: true do
-	validates :zip_code, length: {is: 7}, numericality: true
-  validates :delivery_address, length: {minimum: 2, maximum: 50}
-  validates :delivery_name, length: {minimum: 1}
-end
+	VALID_ZIP_CODE = /\A\d{3}[-]\d{4}\z/  # 郵便番号（ハイフンあり7桁）
+	with_options presence: true do
+		validates :zip_code, format: {
+													with: VALID_ZIP_CODE,
+													message: "はハイフンあり7桁で入力してください。"
+												}
+		validates :delivery_address, length: {minimum: 2, maximum: 50}
+		validates :delivery_name, length: {minimum: 1}
+	end
 
 end
