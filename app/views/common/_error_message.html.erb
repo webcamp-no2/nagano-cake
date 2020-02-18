@@ -1,3 +1,7 @@
-<span class="error_message">
-  <%= resource.errors.full_messages_for(attr).map{|error_message| "##{error_message}" }.join("<br>").html_safe %>
-</span>
+<% if resource.present? && resource.errors.messages[attr].any? %>
+  <span class="error_message">
+    <%#= resource.errors.full_messages_for(attr).map{|error_message| "##{error_message}" }.join("<br>").html_safe %>
+    <%# %>
+    <%= resource.errors.full_messages_for(attr)[0] %>
+  </span>
+<% end%>
