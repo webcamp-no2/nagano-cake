@@ -5,7 +5,7 @@
     </div>
     <div class="col-xs-10">
       <div class="product-card-content">
-        <% if @products.present?%>
+        <% if @products%>
         <%# 商品一覧の場合（一覧、ジャンル検索）%>
         <% if @products.count > 0 %>
         <% if @product_genre.present? %>
