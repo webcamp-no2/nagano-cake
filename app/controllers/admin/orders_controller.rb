@@ -1,6 +1,19 @@
 class Admin::OrdersController < Admin::BaseController
   def index
-  	@orders = Order.page(params[:page]).reverse_order
+    request_referer = Rails.application.routes.recognize_path(request.referer)
+    request_referer_controller = request_referer[:controller]
+    request_referer_action = request_referer[:action]
+
+    if request_referer_controller == "admin/homes" && request_referer_action == "top"
+      # トップページからの遷移 → 今日のオーダーを表示
+      @orders = Order.where("created_at >= ?", Date.today).page(params[:page]).reverse_order
+    elsif request_referer_controller == "admin/customers" && request_referer_action == "show"
+      # 会員詳細からの遷移 ⇨ その会員のオーダーを表示
+      @orders = Order.where('customer_id = ?', request_referer[:id]).page(params[:page]).reverse_order
+    else
+      # 全てのオーダーを表示
+      @orders = Order.page(params[:page]).reverse_order
+    end
   end
 
   def update
