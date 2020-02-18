@@ -35,9 +35,11 @@
                 <%= link_to(cart_items_path, class:"nav-link") do %>
                   <div class="header-nav-list-item">
                     <i class="fas fa-shopping-cart"></i>
+                    <% if current_customer.cart_total_count >= 1 %>
                     <span class="label label-danger">
                       <%= current_customer.cart_total_count %>
                     </span>
+                    <% end %>
                   </div>
                 <% end %>
               <% else %>
