@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
   def index
+    @orders = current_customer.orders.order("created_at DESC")
   end
 
   def new
@@ -9,6 +10,7 @@ class OrdersController < ApplicationController
 
   def confirm
     @order = current_customer.orders.build(set_order)
+    @order.zip_code.insert(3, "-") if @order.zip_code.present? # 郵便番号をハイフンありのフォーマットに変更（破壊的に変更）
     case params[:delivery_address_type]
     when "ご自身の住所"
       @order.zip_code = current_customer.zip_code
@@ -24,6 +26,7 @@ class OrdersController < ApplicationController
     # 請求金額の計算と格納
     @order.payment = current_customer.cart_items.inject(0){|sum, cart_item| cart_item.subtotal_price + sum} + @order.postage
     
+    # オーダーの検証
     unless @order.valid?
       @delivery = Delivery.new
       render :new
@@ -31,16 +34,16 @@ class OrdersController < ApplicationController
   end
 
   def create
-     @order = current_customer.orders.build(set_order)
-     if @order.save!
-        current_customer.cart_items.each do |cart_item|
-          # 注文商品テーブルにレコードを追加する
-          @order_products = OrderProduct.new(
-            product_id: cart_item.product.id,
-            count: cart_item.count,
-            ordered_price: cart_item.product.price_with_tax,
-            order_id: @order.id)
-
+    @order = current_customer.orders.build(set_order)
+    if @order.save!
+      current_customer.cart_items.each do |cart_item|
+        # 注文商品テーブルにレコードを追加する
+        @order_products = OrderProduct.new(
+          product_id: cart_item.product.id,
+          count: cart_item.count,
+          ordered_price: cart_item.product.price_with_tax,
+          order_id: @order.id)
+        
           @order_products.save!
         end
         Delivery.create!(customer_id: current_customer.id, zip_code: @order.zip_code, address: @order.delivery_address, name: @order.delivery_name)

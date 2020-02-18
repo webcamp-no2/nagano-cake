@@ -5,7 +5,9 @@
   </div>
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "form-horizontal customer-registration-form", novalidate: "novalidate" }) do |f| %>
+    
     <%= render partial: "customer_form_item", locals: {resource: resource, f: f} %>
+
     <div class="col-xs-offset-2 col-xs-10", style= "padding-left: 0px">
       <%= f.submit "編集内容を保存する", class:"btn btn-success", style: "width: 12em" %>
     </div>

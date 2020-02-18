@@ -39,7 +39,6 @@ class Customer < ApplicationRecord
   end
 
   # カートアイテム合計
-    # 合計
   def cart_item_sum
     total = 0
     cart_items.each do |cart_item|
