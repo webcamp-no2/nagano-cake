@@ -39,7 +39,7 @@
           </tr>
           <tr>
             <th>販売ステータス</th>
-            <td><%= f.select :sales_status, [["販売停止中",0],["販売中",1]], include_blank: @product.sales_status %></td>
+            <td><%= f.select :sales_status, options_for_select([["販売停止中",0],["販売中",1]], @product.sales_status? ? 1 : 0) %></td>
           </tr>
         </tbody>
       </table>
