@@ -33,6 +33,16 @@ ja:
     confirmations:
       new:
         resend_confirmation_instructions: "アカウント確認メール再送"
+    failure:
+      already_authenticated: "既にサインイン済みです。"
+      inactive: "Your account is not activated yet."
+      invalid: "Invalid %{authentication_keys} or password."
+      locked: "Your account is locked."
+      last_attempt: "You have one more attempt before your account is locked."
+      not_found_in_database: "%{authentication_keys} もしくは パスワードが不正です。"
+      timeout: "Your session expired. Please sign in again to continue."
+      unauthenticated: "続行する前にサインインまたはサインアップする必要があります"
+      unconfirmed: "You have to confirm your email address before continuing."
     mailer:
       confirmation_instructions:
         action: "アカウント確認"
@@ -73,6 +83,9 @@ ja:
     sessions:
       new:
         sign_in: "ログイン"
+      signed_in: "正常にサインインしました。"
+      signed_out: "ログアウトしました。"
+      already_signed_out: "ログアウトしました。"
     shared:
       links:
         back: "戻る"
