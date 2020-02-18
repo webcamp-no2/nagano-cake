@@ -29,6 +29,10 @@ class DeliveriesController < ApplicationController
   end
 
   def destroy
+    @delivery_address = Delivery.find(params[:id])
+    @delivery_address.destroy
+    flash[:notice] = "配送先を削除しました。"
+    redirect_to deliveries_path
   end
 
   private
