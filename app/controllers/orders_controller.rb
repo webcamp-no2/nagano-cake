@@ -20,7 +20,10 @@ class OrdersController < ApplicationController
       @order.delivery_name = Delivery.find(set_delivery[:id]).name
     when "新しいお届け先"
     end
+
+    # 請求金額の計算と格納
     @order.payment = current_customer.cart_items.inject(0){|sum, cart_item| cart_item.subtotal_price + sum} + @order.postage
+    
     unless @order.valid?
       @delivery = Delivery.new
       render :new
