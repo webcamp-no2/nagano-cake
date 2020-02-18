@@ -13,6 +13,11 @@ class CartItemsController < ApplicationController
   end
 
   def update
+    @cart_item = CartItem.find(params[:id])
+    @cart_item.update!(cart_item_params)
+
+    @customer = Customer.find(current_customer.id)
+    render :index
   end
 
   def destroy
