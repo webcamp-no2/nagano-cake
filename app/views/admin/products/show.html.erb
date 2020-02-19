@@ -1,30 +1,36 @@
 <div class="container">
-  <div class="row">
-    <div class="col-xs-10 col-xs-offset-1">
+  <div class="row product-ditail-content">
+    <div class="col-xs-4">
       <p id ="notice"><%= flash[:notice] %></p>
       <h2>商品詳細画面</h2>
-      <%= attachment_image_tag @product, :image, :fill, 100, 100 %>
-      <table class="table">
-        <thead>
-          <tr>
-            <th>商品名</th>
-            <th>商品説明</th>
-            <th>ジャンル</th>
-            <th>税抜価格</th>
-            <th>税込価格</th>
-            <th>販売ステータス</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><%= @product.name %></td>
-            <td><%= @product.description %></td>
-            <td><%= @product.genre.name %></td>
-            <td><%= "#{@product.price}円" %></td>
-            <td><%= "#{(@product.price * Constants::TAX).round }円" %></td>
-            <td><%= @product.sales_status ? "販売中" : "販売停止中" %></td>
-          </tr>
-        </tbody>
+      <%= attachment_image_tag @product, :image, :fill, 300, 300 %>
+    </div>
+    <div class="col-xs-8">
+      <table class="table product-ditail-table">
+        <tr>
+          <th>商品名</th>
+          <td><%= @product.name %></td>
+        </tr>
+        <tr>
+          <th>商品説明</th>
+          <td><%= @product.description %></td>
+        </tr>
+        <tr>
+          <th>ジャンル</th>
+          <td><%= @product.genre.name %></td>
+        </tr>
+        <tr>
+          <th>税抜価格</th>
+          <td><%= "#{@product.price}円" %></td>
+        </tr>
+        <tr>
+          <th>税込価格</th>
+          <td><%= "#{(@product.price * Constants::TAX).round }円" %></td>
+        </tr>
+        <tr>
+          <th>販売ステータス</th>
+          <td><%= @product.sales_status ? "販売中" : "販売停止中" %></td>
+        </tr>
       </table>
       <div>
         <%= link_to "編集", edit_admin_product_path(@product.id), class: "btn btn-success btn-new-register btn-lg" %>
@@ -32,4 +38,5 @@
       </div>
     </div>
   </div>
+</div>
 </div>
