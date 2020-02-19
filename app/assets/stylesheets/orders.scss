@@ -13,6 +13,47 @@
 .products-table{
 	margin-top: 30px;
 }
+// ec-order-new
+.ec-order-new-main{
+	width: 700px;
+	margin: 30px auto;
+	h4 {
+		font-family: 'Noto Serif JP', serif;
+		margin: 50px 0;
+		padding-left: 10px;
+		border-left: solid 2px gray;
+	}
+}
+
+.ec-order-title{
+	font-family: 'Noto Serif JP', serif;
+	margin-bottom: 50px;
+}
+
+.ec-select-payment-method{
+	margin-left: 30px;
+}
+
+.ec-select-address{
+	margin-left: 30px;
+}
+
+.address-form-table{
+	margin-left: 40px;
+	td{
+		line-height: 50px;
+	}
+}
+
+.ec-new-order-note{
+	font-size: 7px;
+	line-height: 10px;
+}
+
+.new-order-btn-wrap{
+	margin-top: 50px;
+	margin-bottom: 50px;
+}
 
 // 注文履歴一覧
 .orders-table{
@@ -33,6 +74,12 @@
 
 // confirm
 .order-confirm{
+	width: 700px;
+	margin: 30px auto;
+}
+
+.ec-order-confirm-title{
+	font-family: 'Noto Serif JP', serif;
 	margin-bottom: 50px;
 }
 
@@ -52,4 +99,9 @@
 
 .comfirmation-btn-wrap{
 	margin-top: 30px;
+}
+
+// thanks-page
+.thanks-message{
+	font-family: 'Noto Serif JP', serif;
 }

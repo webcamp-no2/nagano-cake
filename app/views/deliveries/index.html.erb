@@ -1,7 +1,7 @@
 <div class="container-fluid">
 	<div class="row">
-		<div class="delivery-index col-xs-10 col-xs-offset-1">
-			<h2>配送先一覧/登録</h2>
+		<div class="delivery-index">
+			<h2 class="delivery-index-title">配送先一覧/登録</h2>
 			<!-- success-massage -->
 			<% if flash[:notice] %>
 			  <p class="success-message"><%= flash[:notice] %></p>
@@ -73,7 +73,7 @@
 						<% end %>
 					</tbody>
 				</table>
-					<div class="return-mypage-btn-wrap"><%= link_to "マイページへ戻る", customer_path(current_customer.id), class:"btn btn-primary" %></div>
+					<div class="return-mypage-btn-wrap"><%= link_to "マイページへ戻る", customer_path(current_customer.id), class:"btn btn-default" %></div>
 			</div>
 		</div>
 	</div>

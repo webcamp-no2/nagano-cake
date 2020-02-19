@@ -1,7 +1,7 @@
 
 <div class="form-group">
   <%= f.label "氏名", class: "col-xs-2 control-label" %>
-  <div class="col-xs-6">
+  <div class="col-xs-5">
     <div class="row">
       <div class="col-xs-6 c_r_last_name_field">
         <%= f.text_field :last_name, class:"form-control", placeholder: "長野" %>
@@ -17,7 +17,7 @@
 
 <div class="form-group">
   <%= f.label "フリガナ", class: "col-xs-2 control-label" %>
-  <div class="col-xs-6">
+  <div class="col-xs-5">
     <div class="row">
       <div class="col-xs-6 c_r_kana_last_name_field">
         <%= f.text_field :kana_last_name, class:"form-control", placeholder: "ナガノ" %>
@@ -41,7 +41,7 @@
 
 <div class="form-group">
   <%= f.label "住所", class: "col-xs-2 control-label" %>
-  <div class="col-xs-6">
+  <div class="col-xs-5">
     <%= f.text_field :address, class:"form-control", placeholder: "東京都六本木一丁目コーポ山下603" %>
     <%= render partial: "common/error_message", locals: {resource: resource, attr: :address} %>
   </div>

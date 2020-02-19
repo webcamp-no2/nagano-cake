@@ -2,6 +2,15 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.delivery-index{
+	width: 700px;
+	margin: 30px auto;
+}
+
+.delivery-index-title{
+	font-family: 'Noto Serif JP', serif;
+}
+
 .create-delivery-section,
 .create-delivery-btn-wrap,
 .delivery-index-section,
@@ -20,4 +29,15 @@
 
 .update-delivery-btn-wrap{
 	padding-left: 50px;
+}
+
+// delivery-edit
+.ec-delivery-edit{
+	width: 700px;
+	margin: 30px auto;
+}
+
+.ec-derivery-title{
+	font-family: 'Noto Serif JP', serif;
+	margin-bottom: 50px;
 }
