@@ -16,11 +16,6 @@
 		    </div>
 			<% end %>
 
-			<!-- success-massage -->
-			<% if flash[:notice] %>
-			  <p class="success-message"><%= flash[:notice] %></p>
-			<% end %>
-
 			<!-- new genre form -->
 			<div class="new-genre-form">
 				<%= form_for [:admin, @genre] do |f| %>

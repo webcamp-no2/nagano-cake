@@ -3,10 +3,10 @@
     <div class="col-xs-2">
       <%= render partial: "genre_search", locals: {genres: @genres} %>
     </div>
-    <div class="col-xs-5">
+    <div class="col-xs-5 product-item-content">
       <%= attachment_image_tag @product, :image, :size => '350x300' %>
     </div>
-    <div class="col-xs-5">
+    <div class="col-xs-5 product-item-content">
       <h2><%= @product.name %></h2>
       <p><%= @product.description %></p>
       <p><%= "¥#{(@product.price * Constants::TAX).round}" %>(税込)</p>
