@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-//top
+//admin-top
 .admin-homes-top-title {
   margin-bottom: 50px;
 }
@@ -12,6 +12,16 @@
   padding-left: 20px;
 }
 //top/
+
+// ec-top
+.top-main{
+	padding: 30px 30px;
+	h3{
+		font-family: 'Noto Serif JP', serif;
+		font-weight: bold;
+		color: gray;
+	}
+}
 
 // about
 // タブ全体のスタイル

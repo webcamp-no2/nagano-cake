@@ -3,13 +3,13 @@
     <div class="col-xs-2">
       <%= render partial: "genre_search", locals: {genres: @genres} %>
     </div>
-    <div class="col-xs-10">
+    <div class="col-xs-9 col-xs-offset-1">
       <div class="product-card-content">
-        <% if @products%>
+        <% if @products %>
         <%# 商品一覧の場合（一覧、ジャンル検索）%>
         <% if @products.count > 0 %>
         <% if @product_genre.present? %>
-        <h2><%= @product_genre.name %></h2>
+        <h2 class="top-genre-name-title"><%= @product_genre.name %></h2>
         <% end %>
         <p><%="全#{@products.total_count}件中" + "(#{@products.count}件表示)" %></p>
         <%= render 'product_list', products: @products %>
@@ -20,7 +20,7 @@
         <%# 検索の場合 %>
         <div class="product-card-content">
           <% if @q_products.empty? %>
-          <h3>条件に合う商品が見つかりませんでした</h3>
+          <h3 class="top-empty-message">条件に合う商品が見つかりませんでした</h3>
           <% else %>
           <p><%="#{@q_products.total_count}件の商品がヒットしました" %></p>
           <% end %>

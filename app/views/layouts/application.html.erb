@@ -5,6 +5,7 @@
     <link href="https://fonts.googleapis.com/earlyaccess/kokoro.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Kalam&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Noto+Serif+JP&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c|Noto+Sans+JP|Noto+Serif+JP|Sawarabi+Gothic&display=swap" rel="stylesheet">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -20,10 +21,12 @@
           <% end %>
           <!-- / -->
           <div class="header-vizual">
-            <div class="logo-container">
-              <i class="fas fa-cheese header-icon"></i>
-              <span class="nagano">ながの</span><span class="cake">CAKE</span>
-            </div>
+            <%= link_to(homes_top_path, class:"ec-header-logo") do %>
+              <div class="logo-container">
+                <i class="fas fa-cheese header-icon"></i>
+                <span class="nagano">ながの</span><span class="cake">CAKE</span>
+              </div>
+            <% end %>
           </div>
 
           <div class="header-nav flex">

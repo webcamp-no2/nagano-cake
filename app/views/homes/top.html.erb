@@ -3,9 +3,9 @@
     <div class="col-xs-2">
       <%= render partial: "products/genre_search", locals: {genres: @genres} %>
     </div>
-    <div class="col-xs-10">
+    <div class="col-xs-9 col-xs-offset-1 top-main">
       <div class="row product-card-content">
-        <h4>新着商品</h4>
+        <h3>新着商品</h4>
         <% @products.each do |product| %>
         <%= link_to product_path(product.id) do %>
         <div class="thumbnail product-thumbnail col-xs-2">
@@ -22,7 +22,7 @@
         <% end %>
       </div>
       <div class="row product-card-content">
-        <h4>ランキング</h4>
+        <h3>ランキング</h4>
         <% @all_ranks.each do |product| %>
         <%= link_to product_path(product.id) do %>
         <div class="thumbnail product-thumbnail col-xs-2">

@@ -51,6 +51,11 @@
 	margin: auto 20px;
 }
 
+.ec-header-logo{
+	text-decoration: none !important;
+	color: black;
+}
+
 .logo-container{
 	text-align: center;
 	padding-top: 15px;
@@ -193,7 +198,7 @@ footer h5{
 .footer-cover{
 	width: 100%;
 	height: 300px;
-	background: linear-gradient( 135deg, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0))
+	background: linear-gradient( 180deg, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0))
 	// background-color: rgba(255,255,255,0.5);
 }
 
