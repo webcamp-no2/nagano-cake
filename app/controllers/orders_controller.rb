@@ -21,6 +21,8 @@ class OrdersController < ApplicationController
       @order.delivery_address = Delivery.find(set_delivery[:id]).address
       @order.delivery_name = Delivery.find(set_delivery[:id]).name
     when "新しいお届け先"
+      # 配送先を作成する
+      Delivery.create!(customer_id: current_customer.id, zip_code: @order.zip_code, address: @order.delivery_address, name: @order.delivery_name)
     end
 
     # 請求金額の計算と格納
@@ -46,7 +48,6 @@ class OrdersController < ApplicationController
         
           @order_products.save!
         end
-        Delivery.create!(customer_id: current_customer.id, zip_code: @order.zip_code, address: @order.delivery_address, name: @order.delivery_name)
         # オーダー確定後ユーザーのカートを削除する
         current_customer.cart_items.destroy_all
      end
