@@ -1,9 +1,42 @@
 // Place all the styles related to the products controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// genre-serch-bar
+.genre-list-bar{
+	font-family: 'Noto Serif JP', serif;
+	margin-top: 80px;
+	.ec-genre-list{
+		background-color: #f7f6f5;
+		td{
+			line-height: 60px;
+			font-size: 20px;
+			font-weight: bold;
+		}
+	}
+}
+
+.ec-genre-list-item{
+	color: gray;
+	text-decoration: none !important;
+}
+//
+
+// top
+.product-card-content h2{
+	font-family: 'Noto Serif JP', serif;
+	font-weight: bold;
+	color: gray;
+}
+
+.top-empty-message{
+	font-family: 'Noto Serif JP', serif;
+}
+
 .product-card-content .product-thumbnail {
   border: none;
   text-align: center;
+  margin: 0 30px;
 }
 
 .product-price-area {

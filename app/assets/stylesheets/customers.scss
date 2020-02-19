@@ -30,8 +30,13 @@
 // 会員登録画面/
 
 //マイページ
+.maypage-main{
+  width: 600px;
+  margin: 30px auto;
+}
 .mypage-title {
-  margin-bottom: 20px;
+  margin-bottom: 50px;
+  font-family: "Kokoro";
 }
 
 .mypage-register-info-table {
@@ -54,19 +59,32 @@
 //マイページ/
 
 //登録情報編集画面
+.ec-customers-edit-main{
+  width: 650px;
+  margin: 30px auto;
+}
+
 .ec-customer-edit-title-group {
   display: flex;
   align-items: center;
-  margin-top: 50px;
-  margin-bottom: 30px;
+  margin-bottom: 50px;
   a {
     margin-left: 10px;
   }
 }
 
 .ec-customers-edit-title {
+  font-family: 'Noto Serif JP', serif;
   display: inline-block;
   margin: 0;
+}
+
+.ec-customer-edit-form{
+  margin-top: 0;
+}
+
+.ec-edit-registration-btn-wrap{
+  margin: 50px 0;
 }
 //登録情報編集画面/
 
@@ -88,6 +106,7 @@
 }
 
 .withdraw-confirm-title {
+  font-family: 'Noto Serif JP', serif;
   font-size: 2.5em;
   font-weight: bold;
   margin-bottom: 40px;
