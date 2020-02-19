@@ -9,7 +9,7 @@
         <% @products.each do |product| %>
         <%= link_to product_path(product.id) do %>
         <div class="thumbnail product-thumbnail col-xs-2">
-          <%= attachment_image_tag product, :image, :size => '100x100' %>
+          <%= attachment_image_tag product, :image, :size => '300x300' %>
           <div class="caption">
             <p><%= product.name %></p>
             <p><%= "#{product.price}円" %></p>
@@ -26,7 +26,7 @@
         <% @all_ranks.each do |product| %>
         <%= link_to product_path(product.id) do %>
         <div class="thumbnail product-thumbnail col-xs-2">
-          <%= attachment_image_tag product, :image, :size => '100x100' %>
+          <%= attachment_image_tag product, :image, :size => '300x300' %>
           <div class="caption">
             <p><%= product.name %></p>
             <p><%= "#{product.price}円" %></p>
